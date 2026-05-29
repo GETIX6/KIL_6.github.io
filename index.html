@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Клан [KIL_6] | Официальный сайт</title>
+  <style>
+    :root {
+      --primary: #00ff88;
+      --dark: #0a0a0a;
+      --gray: #1a1a1a;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+      color: #eee;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.95);
+      padding: 1rem 0;
+      border-bottom: 3px solid var(--primary);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 14px 0;
+      background: transparent;
+      border: none;
+      color: #888;
+      font-size: 1.15rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .tab::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      transition: width 0.4s ease;
+    }
+
+    .tab.active {
+      color: var(--primary);
+    }
+
+    .tab.active::after {
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .content { display: none; }
+    .content.active { display: block; }
+
+    .season-banner, .stats-map {
+      width: 100%;
+      max-width: 1100px;
+      margin: 2rem auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      border: 2px solid var(--primary);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--gray);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+      border: 1px solid #333;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: cardAppear 0.8s forwards;
+    }
+
+    @keyframes cardAppear {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px rgba(0, 255, 136, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .kpd-circle {
+      width: 120px;
+      height: 120px;
+      margin: 15px auto;
+      position: relative;
+    }
+
+    .kpd-circle svg { transform: rotate(-90deg); }
+    .kpd-circle .background {
+      fill: none;
+      stroke: #333;
+      stroke-width: 14;
+    }
+    .kpd-circle .progress {
+      fill: none;
+      stroke-width: 14;
+      stroke-linecap: round;
+      stroke-dasharray: 301.59;
+      stroke-dashoffset: 301.59;
+      animation: progressAnimation 2s ease forwards;
+    }
+
+    @keyframes progressAnimation {
+      to { stroke-dashoffset: var(--final-offset); }
+    }
+
+    .kpd-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2.3rem;
+      font-weight: bold;
+      color: white;
+    }
+    .kpd-max { font-size: 1.1rem; color: #666; }
+    .kpd-label { color: #aaa; font-size: 1rem; margin-top: 8px; }
+
+    /* Главная страница */
+    .hero-text {
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+
+    .clan-name {
+      font-size: 4rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+      margin-bottom: 0.5rem;
+    }
+
+    .motto {
+      font-size: 1.35rem;
+      color: #ddd;
+      font-style: italic;
+      letter-spacing: 1px;
+      margin-top: 0.8rem;
+    }
+
+    /* Статистика */
+    .stats-main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+    }
+
+    .stat-card {
+      background: #111;
+      border-radius: 16px;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      border: 3px solid;
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .stat-card.x { border-color: #00ff88; }
+    .stat-card.viii { border-color: #ffd700; }
+    .stat-card.vi { border-color: #00ccff; }
+
+    .stat-card h3 {
+      color: #ffd700;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    .buildings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+      max-width: 1100px;
+      margin: 3rem auto 2rem;
+    }
+
+    .building-card {
+      background: #111;
+      padding: 1.4rem;
+      border-radius: 14px;
+      text-align: center;
+      border: 2px solid #222;
+      transition: all 0.3s;
+    }
+
+    .building-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+    }
+
+    /* Правила */
+    .rules-container {
+      background: linear-gradient(145deg, #1a1a1a, #0f0f1e);
+      border: 3px solid var(--primary);
+      border-radius: 20px;
+      padding: 2.5rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+      box-shadow: 0 15px 40px rgba(0, 255, 136, 0.15);
+    }
+
+    .rules-title {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+      text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+    }
+
+    .rule-item {
+      background: rgba(0, 255, 136, 0.08);
+      padding: 1.3rem 1.6rem;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      border-left: 5px solid var(--primary);
+      color: #00ff88;
+      font-size: 1.08rem;
+      transition: all 0.3s;
+    }
+
+    .rule-item:hover {
+      transform: translateX(10px);
+      background: rgba(0, 255, 136, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <button class="tab active" data-tab="home">Главная</button>
+      <button class="tab" data-tab="members">Состав</button>
+      <button class="tab" data-tab="stats">Статистика</button>
+      <button class="tab" data-tab="rules">Правила</button>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Главная -->
+    <div id="home" class="content active">
+      <h1 style="text-align:center; margin: 2rem 0 1rem; font-size: 3rem;">
+        <span style="color:var(--primary)">[KIL_6]</span>
+      </h1>
+      <img src="images/season-banner.png" alt="Сезон" class="season-banner"
+           onerror="this.src='https://via.placeholder.com/1000x250/111827/00ff88?text=Сезон+Рождение+Бури';">
+
+      <div class="hero-text">
+        <div class="clan-name">THE SHIELD</div>
+        <div class="motto">
+          Дело в правде — Правда в деле — Дело наше — Всегда право
+        </div>
+      </div>
+    </div>
+
+    <!-- Состав -->
+    <div id="members" class="content">
+      <h2 style="margin-bottom: 2rem; text-align:center;">Состав клана</h2>
+      <div class="cards" id="membersCards"></div>
+    </div>
+
+    <!-- Статистика -->
+    <div id="stats" class="content">
+      <h2 style="margin-bottom: 1.5rem; text-align:center;">Статистика клана</h2>
+      
+      <img src="images/stats-map.png" alt="Карта базы" class="stats-map"
+           onerror="this.src='https://via.placeholder.com/1100x620/111827/00ff88?text=Карта+Базы'">
+
+      <div class="stats-main">
+        <div class="stat-card x">
+          <h3>Уровень X</h3>
+          <div class="stat-number" style="color:#00ff88;">1086</div>
+        </div>
+        <div class="stat-card viii">
+          <h3>Уровень VIII</h3>
+          <div class="stat-number" style="color:#ffd700;">1254</div>
+        </div>
+        <div class="stat-card vi">
+          <h3>Уровень VI</h3>
+          <div class="stat-number" style="color:#00ccff;">1161</div>
+        </div>
+      </div>
+
+      <h3 style="text-align:center; margin: 2.5rem 0 1.5rem; color:var(--primary);">Здания базы</h3>
+      
+      <div class="buildings-grid">
+        <div class="building-card"><strong>Командный центр</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card"><strong>Танкодром</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card"><strong>Трофейная бригада</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card"><strong>Автотранспортная часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card"><strong>Финансовая часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card"><strong>Военное училище</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card"><strong>Учебная часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card"><strong>Служба тыла</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card"><strong>Артиллерийский дивизион</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+      </div>
+    </div>
+
+    <!-- Правила -->
+    <div id="rules" class="content">
+      <div class="rules-container">
+        <h1 class="rules-title">ПОСТРОИМ СВОЮ ИМПЕРИЮ — ИМПЕРИЯ БУДЕТ ЖИТЬ!</h1>
+        <h2 style="text-align:center; margin-bottom: 2rem; color:#00ff88;">Требуются бойцы под АБС формат</h2>
+
+        <div class="rule-item">1.  От 5к боёв - МИНИМУМ 7 актуальных топов (возможно исключение)</div>
+        <div class="rule-item">2.  Общий процент — 50% (возможно исключение)</div>
+        <div class="rule-item">3. Наличие танков: CS-63 Wilk, ЧИФ, Concept No. 5, ИС-7, ЕБР, КС-43, ОРSO 60ТП, FV215b, T57X3ВИ, ВЗ 111 А5, Об.260, Об.278, т110е5, ТАЙП 5 ХЕВИ, ТЭТ100, МЕРКАВА, 100ЛТ, МАНТИКОР, Е3, МИНОТАВР.</div>
+        <div class="rule-item">4.  Активная игра ИВЕНТЫ/ГК/АБС/ЧЕМПИОНКА - ПО МЕРЕ ВОЗМОЖНОСТИ</div>
+        <div class="rule-item">5. DMG Боев не ниже 2K</div>
+        <div class="rule-item">6.  WN8 от 1800</div>
+        <div class="rule-item">7. Запустил TEAMSPEAK зашёл в игру - TS3v.RU:16787, 145.239.26.75:8414, kil6.ts3.se</div>
+        <div class="rule-item">8. Адекватность • Объективность • Целеустремлённость</div>
+        <div class="rule-item">9. Если вы полезны СООБЩЕСТВУ могут быть исключения</div>
+        <div class="rule-item">10. От НАС 1) Плюшки 2) Укрепы, гк, спринты. 3) Помощь с ЛБЗ и наградой голдой за актив в укрепе и помощь в развитие клана.</div>
+
+        <p style="text-align:center; margin-top: 2.5rem; font-size: 1.3rem; color: var(--primary);">
+          Общаемся — Беседа в ВК.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function getKpdColor(kpd) {
+      if (kpd >= 4.0) return "#00ff88";
+      if (kpd >= 3.0) return "#ffd700";
+      if (kpd >= 2.0) return "#ff8800";
+      if (kpd >= 1.0) return "#ff4444";
+      return "#888888";
+    }
+
+    // Переключение вкладок
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ==================== ИГРОКИ ====================
+    const members = [
+      { name: "evgecshok",         kpd: 4.9, role: "Лидер",          img: "images/player1.jpg" },
+      { name: "HE_IIpoJIUL",       kpd: 4.7, role: "Заместитель",    img: "images/player2.jpg" },
+      { name: "surprizZze",        kpd: 4.6, role: "Активный игрок", img: "images/player3.jpg" },
+      { name: "oxana2009",         kpd: 4.2, role: "Активный игрок", img: "images/player4.jpg" },
+      { name: "Byaka2311",         kpd: 4.0, role: "Активный игрок", img: "images/player5.jpg" },
+      { name: "CaMyPau_PA",        kpd: 4.0, role: "Активный игрок", img: "images/player6.jpg" },
+      { name: "egorka_544mcotg",   kpd: 4.0, role: "Активный игрок", img: "images/player7.jpg" },
+      { name: "FruKTIc_",          kpd: 4.0, role: "Активный игрок", img: "images/player8.jpg" },
+      { name: "KOrbenDallass",     kpd: 4.0, role: "Активный игрок", img: "images/player9.jpg" },
+      { name: "kiruxa3473",        kpd: 4.0, role: "Активный игрок", img: "images/player10.jpg" },
+      { name: "LeBwa_58_rus",      kpd: 4.0, role: "Активный игрок", img: "images/player11.jpg" },
+      { name: "Liquidatop_",       kpd: 4.0, role: "Активный игрок", img: "images/player12.jpg" },
+      { name: "New_Goal",          kpd: 4.0, role: "Активный игрок", img: "images/player13.jpg" },
+      { name: "sacha_1986",        kpd: 4.0, role: "Активный игрок", img: "images/player14.jpg" },
+      { name: "SUPER_RAK",         kpd: 4.0, role: "Активный игрок", img: "images/player15.jpg" },
+      { name: "TauruS_716",        kpd: 4.0, role: "Активный игрок", img: "images/player16.jpg" },
+      { name: "TSUNXM1",           kpd: 4.0, role: "Активный игрок", img: "images/player17.jpg" },
+      { name: "Vitek_7777",        kpd: 4.0, role: "Активный игрок", img: "images/player18.jpg" },
+      { name: "Wolfsburg__I_LI",   kpd: 4.0, role: "Активный игрок", img: "images/player19.jpg" },
+      { name: "BaHDuT_c_ALTaYa_",  kpd: 4.0, role: "Активный игрок", img: "images/player20.jpg" },
+      { name: "3PX",               kpd: 4.0, role: "Активный игрок", img: "images/player21.jpg" },
+      { name: "Bentusi",           kpd: 4.0, role: "Активный игрок", img: "images/player22.jpg" },
+      { name: "Fapyta",            kpd: 4.0, role: "Активный игрок", img: "images/player23.jpg" },
+      { name: "HET_Fan_ID",        kpd: 4.0, role: "Активный игрок", img: "images/player24.jpg" },
+      { name: "H06bIT",            kpd: 4.0, role: "Активный игрок", img: "images/player25.jpg" },
+      { name: "Lel_Xolod98",       kpd: 4.0, role: "Активный игрок", img: "images/player26.jpg" },
+      { name: "P03K0m_HaDz0P",     kpd: 4.0, role: "Активный игрок", img: "images/player27.jpg" },
+      { name: "RUSSIAN_OKUPANTO",  kpd: 4.0, role: "Активный игрок", img: "images/player28.jpg" },
+      { name: "Ta_samaya_uchilka", kpd: 4.0, role: "Активный игрок", img: "images/player29.jpg" },
+      { name: "X_o.3.j.A.LH",      kpd: 4.0, role: "Активный игрок", img: "images/player30.jpg" },
+      { name: "_RabIs_",           kpd: 4.0, role: "Активный игрок", img: "images/player31.jpg" },
+      { name: "_STALNOI_SOKOL_",   kpd: 4.0, role: "Активный игрок", img: "images/player32.jpg" },
+      { name: "AAA0101",           kpd: 4.0, role: "Активный игрок", img: "images/player33.jpg" },
+      { name: "CAHbl4_34",         kpd: 4.0, role: "Активный игрок", img: "images/player34.jpg" },
+      { name: "Cme6acJlo",         kpd: 4.0, role: "Активный игрок", img: "images/player35.jpg" },
+      { name: "druidv",            kpd: 4.0, role: "Активный игрок", img: "images/player36.jpg" },
+      { name: "eXSoldier",         kpd: 4.0, role: "Активный игрок", img: "images/player37.jpg" },
+      { name: "Lexa_23rus_1",      kpd: 4.0, role: "Активный игрок", img: "images/player38.jpg" },
+      { name: "mat2777",           kpd: 4.0, role: "Активный игрок", img: "images/player39.jpg" },
+      { name: "NikerTp",           kpd: 4.0, role: "Активный игрок", img: "images/player40.jpg" },
+      { name: "Zarecevagor",       kpd: 4.0, role: "Активный игрок", img: "images/player41.jpg" },
+      { name: "MPA4HblU_PACUDOK",  kpd: 4.0, role: "Активный игрок", img: "images/player42.jpg" }
+    ];
+
+    const container = document.getElementById('membersCards');
+    
+    members.forEach((m, index) => {
+      const max = 5;
+      const circumference = 2 * Math.PI * 48;
+      const offset = circumference - (m.kpd / max) * circumference;
+      const color = getKpdColor(m.kpd);
+
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.style.animationDelay = `${index * 60}ms`;
+
+      card.innerHTML = `
+        <img src="${m.img}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/300x180/00ff88/000?text=${m.name}'">
+        <div class="card-body">
+          <h3>${m.name}</h3>
+          <p style="color:#aaa; margin: 8px 0;">${m.role}</p>
+          <div class="kpd-circle">
+            <svg width="120" height="120">
+              <circle class="background" cx="60" cy="60" r="48"></circle>
+              <circle class="progress" cx="60" cy="60" r="48"
+                      stroke="${color}"
+                      style="--final-offset: ${offset};"></circle>
+            </svg>
+            <div class="kpd-text">${m.kpd}<span class="kpd-max">/5</span></div>
+          </div>
+          <div class="kpd-label">Коэффициент Полезности</div>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
