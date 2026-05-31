@@ -80,14 +80,8 @@
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .season-banner, .stats-map {
@@ -112,18 +106,67 @@
       overflow: hidden;
       transition: all 0.3s;
       border: 1px solid #333;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: cardAppear 0.8s forwards;
-    }
-
-    @keyframes cardAppear {
-      to { opacity: 1; transform: translateY(0); }
+      cursor: pointer;
     }
 
     .card:hover {
       transform: translateY(-10px);
       box-shadow: 0 20px 30px rgba(0, 255, 136, 0.2);
+    }
+
+    /* Модальное окно */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: #111;
+      width: 90%;
+      max-width: 520px;
+      border-radius: 20px;
+      border: 3px solid var(--primary);
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-header {
+      padding: 1.5rem;
+      background: linear-gradient(90deg, #1a1a1a, #222);
+      text-align: center;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .modal-body {
+      padding: 1.8rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .rank-bar {
+      height: 18px;
+      background: #222;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+
+    .rank-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), #00cc66);
     }
 
     /* Фильтры */
@@ -384,7 +427,7 @@
       <div class="cards" id="membersCards"></div>
     </div>
 
-    <!-- Прогрессия -->
+    <!-- Прогрессия, Статистика, Правила (без изменений) -->
     <div id="progress" class="content">
       <h2 style="text-align:center; margin-bottom: 0.5rem;">Клановая Прогрессия</h2>
       <div class="timer" id="countdown">До сброса: 167:59:59</div>
@@ -395,73 +438,72 @@
           <div class="big-progress-fill" style="width: 0%"></div>
         </div>
         <div style="display: flex; justify-content: space-between; font-size: 1.1rem;">
-          <span>Очки прогрессии: <strong>6000 / 10000</strong></span>
-          <span><strong>60%</strong></span>
+          <span>Очки прогрессии: <strong>0 / 10000</strong></span>
+          <span><strong>0%</strong></span>
         </div>
       </div>
 
       <div class="mission">
         <div class="mission-header">
           <div class="mission-title">Победы в Вылозки 6/8/10</div>
-          <div>4 / 70</div>
+          <div>0 / 70</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
         <div class="mission-footer">
           <span>Награда: +2000 очков</span>
-          <span>7%</span>
+          <span>0%</span>
         </div>
       </div>
 
       <div class="mission">
         <div class="mission-header">
           <div class="mission-title">Урон в вылозках</div>
-          <div>20000 / 20000</div>
+          <div>0 / 20000</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
         <div class="mission-footer">
           <span>Награда: +2000 очков</span>
-          <span>100%</span>
+          <span>0%</span>
         </div>
       </div>
 
       <div class="mission">
         <div class="mission-header">
           <div class="mission-title">Свет в вылозках</div>
-          <div>6788 / 20000</div>
+          <div>0 / 20000</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
         <div class="mission-footer">
           <span>Награда: +2000 очков</span>
-          <span>42%</span>
+          <span>0%</span>
         </div>
       </div>
 
       <div class="mission">
         <div class="mission-header">
           <div class="mission-title">Фраги</div>
-          <div>25/ 25</div>
+          <div>0 / 25</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
         <div class="mission-footer">
           <span>Награда: +2000 очков</span>
-          <span>100%</span>
+          <span>0%</span>
         </div>
       </div>
 
       <div class="mission">
         <div class="mission-header">
           <div class="mission-title">Активность клана</div>
-          <div>7 / 7</div>
+          <div>0 / 7</div>
         </div>
         <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
         <div class="mission-footer">
           <span>Награда: +2000 очков</span>
-          <span>1000%</span>
+          <span>0%</span>
         </div>
       </div>
     </div>
 
-    <!-- Статистика -->
     <div id="stats" class="content">
       <h2 style="margin-bottom: 1.5rem; text-align:center;">Статистика клана</h2>
       <img src="images/stats-map.png" alt="Карта базы" class="stats-map"
@@ -474,7 +516,7 @@
         </div>
         <div class="stat-card viii">
           <h3>Уровень VIII</h3>
-          <div class="stat-number" style="color:#ffd700;">1261</div>
+          <div class="stat-number" style="color:#ffd700;">1254</div>
         </div>
         <div class="stat-card vi">
           <h3>Уровень VI</h3>
@@ -483,7 +525,6 @@
       </div>
 
       <h3 style="text-align:center; margin: 2.5rem 0 1.5rem; color:var(--primary);">Здания базы</h3>
-      
       <div class="buildings-grid">
         <div class="building-card"><strong>Командный центр</strong><br><span style="color:#00ff88;">Уровень X</span></div>
         <div class="building-card"><strong>Танкодром</strong><br><span style="color:#00ff88;">Уровень X</span></div>
@@ -497,7 +538,6 @@
       </div>
     </div>
 
-    <!-- Правила -->
     <div id="rules" class="content">
       <h2 style="margin-bottom: 2rem; text-align:center;">Правила клана</h2>
       <div style="background: #111; padding: 2rem; border-radius: 16px; border: 2px solid var(--primary); max-width: 1000px; margin: 0 auto;">
@@ -513,6 +553,15 @@
         <p style="margin-bottom: 1.5rem;">9. Если вы полезны СООБЩЕСТВУ могут быть исключения</p>
         <p style="margin-bottom: 1.5rem;">10. От НАС 1) Плюшки 2) Укрепы, гк, спринты. 3) Помощь с ЛБЗ и наградой голдой за актив в укрепе и помощь в развитие клана.</p>
       </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО -->
+  <div id="playerModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">×</span>
+      <div class="modal-header" id="modalHeader"></div>
+      <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
 
@@ -534,7 +583,7 @@
       });
     });
 
-    // ==================== ИГРОКИ ====================
+    // ==================== АКТУАЛЬНЫЕ ИГРОКИ ====================
     const members = [
       { name: "evgecshok", kpd: 5.5, role: "Лидер", img: "images/player1.jpg" },
       { name: "HE_IIpoJIUL", kpd: 3.0, role: "Активный игрок", img: "images/player2.jpg" },
@@ -587,6 +636,66 @@
     const searchInput = document.getElementById('searchInput');
     const sortSelect = document.getElementById('sortSelect');
 
+    function getPlayerRank(name) {
+      const sorted = [...members].sort((a, b) => b.kpd - a.kpd);
+      return sorted.findIndex(p => p.name === name) + 1;
+    }
+
+    function openPlayerModal(player) {
+      const rank = getPlayerRank(player.name);
+      const total = members.length;
+      const percent = Math.round((rank / total) * 100);
+
+      document.getElementById('modalHeader').innerHTML = `
+        <h2 style="color:var(--primary);">${player.name}</h2>
+        <p style="color:#aaa;">${player.role}</p>
+      `;
+
+      document.getElementById('modalBody').innerHTML = `
+        <div style="text-align:center; margin-bottom: 1.5rem;">
+          <img src="${player.img}" alt="${player.name}" 
+               style="width:100%; max-height:220px; object-fit:cover; border-radius:12px;"
+               onerror="this.src='https://via.placeholder.com/400x220/00ff88/000?text=${player.name}'">
+        </div>
+
+        <div style="display:flex; justify-content:space-between; margin: 1.2rem 0;">
+          <div>
+            <strong>КПД</strong><br>
+            <span style="font-size:2.2rem; color:${getKpdColor(player.kpd)};">${player.kpd}/10</span>
+          </div>
+          <div>
+            <strong>Место в клане</strong><br>
+            <span style="font-size:2.2rem; color:var(--primary);">${rank} / ${total}</span>
+          </div>
+        </div>
+
+        <div style="margin: 1.5rem 0;">
+          <small>Позиция по КПД</small>
+          <div class="rank-bar">
+            <div class="rank-fill" style="width: ${percent}%"></div>
+          </div>
+          <small style="color:#aaa;">${percent}% от топа клана</small>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <strong>Медали и достижения</strong>
+          <div style="background:#1a1a1a; padding:1.2rem; border-radius:12px; margin-top:8px; text-align:center; color:#777;">
+            Медалей нету
+          </div>
+        </div>
+
+        <button onclick="closeModal()" style="margin-top:1.5rem; width:100%; padding:14px; background:#222; border:none; border-radius:8px; color:white; font-size:1.1rem; cursor:pointer;">
+          Закрыть
+        </button>
+      `;
+
+      document.getElementById('playerModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('playerModal').style.display = 'none';
+    }
+
     function renderMembers(filteredMembers) {
       container.innerHTML = '';
       filteredMembers.forEach((m, index) => {
@@ -616,6 +725,8 @@
             <div class="kpd-label">Коэффициент Полезности</div>
           </div>
         `;
+
+        card.addEventListener('click', () => openPlayerModal(m));
         container.appendChild(card);
       });
     }
