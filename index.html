@@ -3,766 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Клан [KIL_6] | Официальный сайт</title>
+  <title>[KIL_6] THE SHIELD - Технические работы</title>
   <style>
     :root {
       --primary: #00ff88;
       --dark: #0a0a0a;
-      --gray: #1a1a1a;
     }
-    
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
       color: #eee;
       min-height: 100vh;
-    }
-
-    header {
-      background: rgba(0, 0, 0, 0.95);
-      padding: 1rem 0;
-      border-bottom: 3px solid var(--primary);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .nav {
-      max-width: 1200px;
-      margin: 0 auto;
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 2.8rem;
-      flex-wrap: wrap;
+      text-align: center;
     }
 
-    .tab {
-      padding: 14px 0;
-      background: transparent;
-      border: none;
-      color: #888;
-      font-size: 1.15rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.3s;
-      position: relative;
+    .maintenance-container {
+      max-width: 700px;
+      padding: 3rem 2rem;
     }
 
-    .tab.active {
+    .logo {
+      font-size: 4.5rem;
+      margin-bottom: 1rem;
       color: var(--primary);
+      text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
     }
 
-    .tab.active::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--primary);
+    .title {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    .content {
-      display: none;
-      animation: fadeInUp 0.7s ease forwards;
-    }
-
-    .content.active {
-      display: block;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .season-banner, .stats-map {
-      width: 100%;
-      max-width: 1100px;
-      margin: 2rem auto;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-      border: 2px solid var(--primary);
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: var(--gray);
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.3s;
-      border: 1px solid #333;
-      cursor: pointer;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 30px rgba(0, 255, 136, 0.2);
-    }
-
-    /* Модальное окно */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-content {
-      background: #111;
-      width: 90%;
-      max-width: 520px;
-      border-radius: 20px;
-      border: 3px solid var(--primary);
-      overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
-    }
-
-    .modal-header {
-      padding: 1.5rem;
-      background: linear-gradient(90deg, #1a1a1a, #222);
-      text-align: center;
-      border-bottom: 2px solid var(--primary);
-    }
-
-    .modal-body {
-      padding: 1.8rem;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #888;
-    }
-
-    .rank-bar {
-      height: 18px;
-      background: #222;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 8px 0;
-    }
-
-    .rank-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--primary), #00cc66);
-    }
-
-    /* Фильтры */
-    .filters {
-      display: flex;
-      gap: 15px;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    .search-input {
-      padding: 10px 16px;
-      background: #111;
-      border: 2px solid #333;
-      border-radius: 8px;
-      color: white;
-      width: 280px;
-    }
-
-    select {
-      padding: 10px 14px;
-      background: #111;
-      border: 2px solid #333;
-      border-radius: 8px;
-      color: white;
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .kpd-circle {
-      width: 130px;
-      height: 130px;
-      margin: 15px auto;
-      position: relative;
-    }
-
-    .kpd-circle svg { transform: rotate(-90deg); }
-    .kpd-circle .background {
-      fill: none;
-      stroke: #333;
-      stroke-width: 14;
-    }
-    .kpd-circle .progress {
-      fill: none;
-      stroke-width: 14;
-      stroke-linecap: round;
-      stroke-dasharray: 377;
-      stroke-dashoffset: 377;
-      animation: progressAnimation 2s ease forwards;
-    }
-
-    @keyframes progressAnimation {
-      to { stroke-dashoffset: var(--final-offset); }
-    }
-
-    .kpd-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 2.4rem;
-      font-weight: bold;
-      color: white;
-    }
-    .kpd-max { font-size: 1.1rem; color: #666; }
-    .kpd-label { color: #aaa; font-size: 1rem; margin-top: 8px; }
-
-    /* Прогрессия */
-    .clan-progress {
-      background: linear-gradient(145deg, #1a1a1a, #111);
-      border: 3px solid var(--primary);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2.5rem;
-      text-align: center;
-    }
-
-    .big-progress-bar {
-      height: 28px;
-      background: #222;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 15px 0;
-      border: 2px solid #333;
-    }
-
-    .big-progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #00ff88, #00cc66);
-      border-radius: 999px;
-      transition: width 2s ease;
-    }
-
-    .mission {
-      background: #1a1a1a;
-      border-radius: 14px;
-      padding: 1.4rem;
-      margin-bottom: 1.2rem;
-      border-left: 5px solid var(--primary);
-      transition: all 0.3s;
-    }
-
-    .mission:hover {
-      transform: translateX(8px);
-      background: #222;
-    }
-
-    .mission-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .mission-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    .progress-bar {
-      height: 10px;
-      background: #333;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 10px 0;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #00ff88, #00cc66);
-      border-radius: 999px;
-      transition: width 1.5s ease;
-    }
-
-    .mission-footer {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.95rem;
+    .subtitle {
+      font-size: 1.4rem;
       color: #aaa;
+      margin-bottom: 3rem;
     }
 
-    .timer {
+    .status {
+      display: inline-block;
+      background: rgba(255, 68, 68, 0.15);
       color: #ff4444;
+      padding: 12px 30px;
+      border-radius: 50px;
+      border: 2px solid #ff4444;
       font-weight: bold;
-      text-align: center;
-      font-size: 1.45rem;
-      margin: 1.5rem 0 2.5rem;
+      margin-bottom: 3rem;
+      animation: pulse 2s infinite;
     }
 
-    /* Статистика */
-    .stats-main {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      max-width: 1100px;
-      margin: 2rem auto;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
     }
 
-    .stat-card {
-      background: #111;
-      border-radius: 16px;
-      padding: 1.8rem 1.5rem;
-      text-align: center;
-      border: 3px solid;
-      transition: all 0.3s;
+    .message {
+      font-size: 1.25rem;
+      line-height: 1.8;
+      color: #ccc;
+      margin-bottom: 3rem;
     }
 
-    .stat-card:hover {
-      transform: translateY(-8px);
+    .footer {
+      color: #666;
+      font-size: 1.1rem;
     }
 
-    .stat-card.x { border-color: #00ff88; }
-    .stat-card.viii { border-color: #ffd700; }
-    .stat-card.vi { border-color: #00ccff; }
-
-    .stat-card h3 {
-      color: #ffd700;
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
-    }
-
-    .stat-number {
-      font-size: 3.5rem;
-      font-weight: bold;
-      margin: 0.5rem 0;
-    }
-
-    .buildings-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.2rem;
-      max-width: 1100px;
-      margin: 3rem auto 2rem;
-    }
-
-    .building-card {
-      background: #111;
-      padding: 1.4rem;
-      border-radius: 14px;
-      text-align: center;
-      border: 2px solid #222;
-      transition: all 0.3s;
-    }
-
-    .building-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-5px);
+    .icon {
+      font-size: 6rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav class="nav">
-      <button class="tab active" data-tab="home">Главная</button>
-      <button class="tab" data-tab="members">Состав</button>
-      <button class="tab" data-tab="progress">Прогрессия</button>
-      <button class="tab" data-tab="stats">Статистика</button>
-      <button class="tab" data-tab="rules">Правила</button>
-    </nav>
-  </header>
-
-  <div class="container">
-    <!-- Главная -->
-    <div id="home" class="content active">
-      <h1 style="text-align:center; margin: 2rem 0 1rem; font-size: 3rem;">
-        <span style="color:var(--primary)">[KIL_6] THE SHIELD</span>
-      </h1>
-      <img src="images/season-banner.png" alt="Сезон" class="season-banner"
-           onerror="this.src='https://via.placeholder.com/1000x250/111827/00ff88?text=Сезон+Рождение+Бури';">
+  <div class="maintenance-container">
+    <div class="icon">🔧</div>
+    
+    <div class="logo">[KIL_6] THE SHIELD</div>
+    <h1 class="title">Ведутся технические работы</h1>
+    
+    <div class="status">
+      ● Сайт временно недоступен
     </div>
 
-    <!-- Состав -->
-    <div id="members" class="content">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-        <h2>Состав клана</h2>
-        <div class="filters">
-          <input type="text" id="searchInput" class="search-input" placeholder="Поиск по нику...">
-          <select id="sortSelect">
-            <option value="default">Сортировка</option>
-            <option value="name-asc">По алфавиту (А-Я)</option>
-            <option value="name-desc">По алфавиту (Я-А)</option>
-            <option value="kpd-desc">КПД ↓</option>
-            <option value="kpd-asc">КПД ↑</option>
-          </select>
-        </div>
-      </div>
-      <div class="cards" id="membersCards"></div>
-    </div>
+    <p class="message">
+      <br><br>
+      Сейчас на сайте проводятся плановые технические работы.<br>
+    </p>
 
-    <!-- Прогрессия, Статистика, Правила (без изменений) -->
-    <div id="progress" class="content">
-      <h2 style="text-align:center; margin-bottom: 0.5rem;">Клановая Прогрессия</h2>
-      <div class="timer" id="countdown">До сброса: 167:59:59</div>
-
-      <div class="clan-progress">
-        <div class="progress-title">ПРОГРЕСС КЛАНА ЗА НЕДЕЛЮ</div>
-        <div class="big-progress-bar">
-          <div class="big-progress-fill" style="width: 80%"></div>
-        </div>
-        <div style="display: flex; justify-content: space-between; font-size: 1.1rem;">
-          <span>Очки прогрессии: <strong>8000 / 10000</strong></span>
-          <span><strong>80%</strong></span>
-        </div>
-      </div>
-
-      <div class="mission">
-        <div class="mission-header">
-          <div class="mission-title">Победы в Вылозки 6/8/10</div>
-          <div>20 / 70</div>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 39%"></div></div>
-        <div class="mission-footer">
-          <span>Награда: +2000 очков</span>
-          <span>39%</span>
-        </div>
-      </div>
-
-      <div class="mission">
-        <div class="mission-header">
-          <div class="mission-title">Урон в вылозках</div>
-          <div>20000 / 20000</div>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
-        <div class="mission-footer">
-          <span>Награда: +2000 очков</span>
-          <span>100%</span>
-        </div>
-      </div>
-
-      <div class="mission">
-        <div class="mission-header">
-          <div class="mission-title">Свет в вылозках</div>
-          <div>20000 / 20000</div>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
-        <div class="mission-footer">
-          <span>Награда: +2000 очков</span>
-          <span>100%</span>
-        </div>
-      </div>
-
-      <div class="mission">
-        <div class="mission-header">
-          <div class="mission-title">Фраги</div>
-          <div>25 / 25</div>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
-        <div class="mission-footer">
-          <span>Награда: +2000 очков</span>
-          <span>100%</span>
-        </div>
-      </div>
-
-      <div class="mission">
-        <div class="mission-header">
-          <div class="mission-title">Активность клана</div>
-          <div>7 / 7</div>
-        </div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
-        <div class="mission-footer">
-          <span>Награда: +2000 очков</span>
-          <span>100%</span>
-        </div>
-      </div>
-    </div>
-
-    <div id="stats" class="content">
-      <h2 style="margin-bottom: 1.5rem; text-align:center;">Статистика клана</h2>
-      <img src="images/stats-map.png" alt="Карта базы" class="stats-map"
-           onerror="this.src='https://via.placeholder.com/1100x620/111827/00ff88?text=Карта+Базы';">
-
-      <div class="stats-main">
-        <div class="stat-card x">
-          <h3>Уровень X</h3>
-          <div class="stat-number" style="color:#00ff88;">1086</div>
-        </div>
-        <div class="stat-card viii">
-          <h3>Уровень VIII</h3>
-          <div class="stat-number" style="color:#ffd700;">1237</div>
-        </div>
-        <div class="stat-card vi">
-          <h3>Уровень VI</h3>
-          <div class="stat-number" style="color:#00ccff;">1161</div>
-        </div>
-      </div>
-
-      <h3 style="text-align:center; margin: 2.5rem 0 1.5rem; color:var(--primary);">Здания базы</h3>
-      <div class="buildings-grid">
-        <div class="building-card"><strong>Командный центр</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Танкодром</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Трофейная бригада</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Автотранспортная часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Финансовая часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Военное училище</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Учебная часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Служба тыла</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Артиллерийский дивизион</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-      </div>
-    </div>
-
-    <div id="rules" class="content">
-      <h2 style="margin-bottom: 2rem; text-align:center;">Правила клана</h2>
-      <div style="background: #111; padding: 2rem; border-radius: 16px; border: 2px solid var(--primary); max-width: 1000px; margin: 0 auto;">
-        <h2 style="text-align:center; margin-bottom: 2rem; color:#00ff88;">Требуются бойцы под АБС формат</h2>
-        <p style="margin-bottom: 1.5rem;">1. От 5к боёв - МИНИМУМ 7 актуальных топов (возможно исключение)</p>
-        <p style="margin-bottom: 1.5rem;">2. Общий процент — 50% (возможно исключение)</p>
-        <p style="margin-bottom: 1.5rem;">3. Наличие танков: CS-63 Wilk, ЧИФ, Concept No. 5, ИС-7, ЕБР, КС-43, ОРSO 60ТП, FV215b, T57X3ВИ, ВЗ 111 А5, Об.260, Об.278, т110е5, ТАЙП 5 ХЕВИ, ТЭТ100, МЕРКАВА, 100ЛТ, МАНТИКОР, Е3, МИНОТАВР.</p>
-        <p style="margin-bottom: 1.5rem;">4. Активная игра ИВЕНТЫ/ГК/АБС/ЧЕМПИОНКА - ПО МЕРЕ ВОЗМОЖНОСТИ</p>
-        <p style="margin-bottom: 1.5rem;">5. DMG Боев не ниже 2K</p>
-        <p style="margin-bottom: 1.5rem;">6. WN8 от 1800</p>
-        <p style="margin-bottom: 1.5rem;">7. Запустил TEAMSPEAK зашёл в игру - TS3v.RU:16787, 145.239.26.75:8414, kil6.ts3.se</p>
-        <p style="margin-bottom: 1.5rem;">8. Адекватность • Объективность • Целеустремлённость</p>
-        <p style="margin-bottom: 1.5rem;">9. Если вы полезны СООБЩЕСТВУ могут быть исключения</p>
-        <p style="margin-bottom: 1.5rem;">10. От НАС 1) Плюшки 2) Укрепы, гк, спринты. 3) Помощь с ЛБЗ и наградой голдой за актив в укрепе и помощь в развитие клана.</p>
-      </div>
+    <div class="footer">
+      Спасибо за понимание <br>
+      — Команда [KIL_6] THE SHIELD
     </div>
   </div>
-
-  <!-- МОДАЛЬНОЕ ОКНО -->
-  <div id="playerModal" class="modal">
-    <div class="modal-content">
-      <span class="modal-close" onclick="closeModal()">×</span>
-      <div class="modal-header" id="modalHeader"></div>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
-  </div>
-
-  <script>
-    function getKpdColor(kpd) {
-      if (kpd >= 10) return "#c026d3";
-      if (kpd >= 7) return "#00ff88";
-      if (kpd >= 4) return "#ffd700";
-      return "#ff4444";
-    }
-
-    // Переключение вкладок
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-        document.getElementById(tab.dataset.tab).classList.add('active');
-      });
-    });
-
-    // ==================== АКТУАЛЬНЫЕ ИГРОКИ ====================
-    const members = [
-      { name: "evgecshok", kpd: 9.7, role: "Лидер", img: "images/player1.jpg" },
-      { name: "HE_IIpoJIUL", kpd: 5.4, role: "Активный игрок", img: "images/player2.jpg" },
-      { name: "surprizZze", kpd: 10.0, role: "Активный игрок", img: "images/player3.jpg" },
-      { name: "oxana2009", kpd: 1.0, role: "Активный игрок", img: "images/player4.jpg" },
-      { name: "Byaka2311", kpd: 3.1, role: "Активный игрок", img: "images/player5.jpg" },
-      { name: "CaMyPau_PA", kpd: 1.0, role: "Активный игрок", img: "images/player6.jpg" },
-      { name: "egorka_544mcotg", kpd: 4.2, role: "Активный игрок", img: "images/player7.jpg" },
-      { name: "FruKTIc_", kpd: 1.7, role: "Активный игрок", img: "images/player8.jpg" },
-      { name: "KOrbenDallass", kpd: 1.0, role: "Активный игрок", img: "images/player9.jpg" },
-      { name: "kiruxa3473", kpd: 4.0, role: "Активный игрок", img: "images/player10.jpg" },
-      { name: "LeBwa_58_rus", kpd: 1.0, role: "Активный игрок", img: "images/player11.jpg" },
-      { name: "Liquidatop_", kpd: 1.0, role: "Активный игрок", img: "images/player12.jpg" },
-      { name: "New_Goal", kpd: 5.4, role: "Активный игрок", img: "images/player13.jpg" },
-      { name: "sacha_1986", kpd: 1.0, role: "Активный игрок", img: "images/player14.jpg" },
-      { name: "SUPER_RAK", kpd: 1.0, role: "Активный игрок", img: "images/player15.jpg" },
-      { name: "TauruS_716", kpd: 1.0, role: "Активный игрок", img: "images/player16.jpg" },
-      { name: "TSUNXM1", kpd: 1.0, role: "Активный игрок", img: "images/player17.jpg" },
-      { name: "Vitek_7777", kpd: 1.2, role: "Активный игрок", img: "images/player18.jpg" },
-      { name: "Wolfsburg__I_LI", kpd: 1.0, role: "Активный игрок", img: "images/player19.jpg" },
-      { name: "BaHDuT_c_ALTaYa_", kpd: 1.0, role: "Активный игрок", img: "images/player20.jpg" },
-      { name: "3PX", kpd: 1.0, role: "Активный игрок", img: "images/player21.jpg" },
-      { name: "Bentusi", kpd: 1.0, role: "Активный игрок", img: "images/player22.jpg" },
-      { name: "Fapyta", kpd: 1.0, role: "Активный игрок", img: "images/player23.jpg" },
-      { name: "HET_Fan_ID", kpd: 1.0, role: "Активный игрок", img: "images/player24.jpg" },
-      { name: "H06bIT", kpd: 1.0, role: "Активный игрок", img: "images/player25.jpg" },
-      { name: "Lel_Xolod98", kpd: 1.0, role: "Активный игрок", img: "images/player26.jpg" },
-      { name: "P03K0m_HaDz0P", kpd: 2.4, role: "Активный игрок", img: "images/player27.jpg" },
-      { name: "RUSSIAN_OKUPANTO", kpd: 1.0, role: "Активный игрок", img: "images/player28.jpg" },
-      { name: "Ta_samaya_uchilka", kpd: 1.0, role: "Активный игрок", img: "images/player29.jpg" },
-      { name: "X_o.3.j.A.LH", kpd: 1.0, role: "Активный игрок", img: "images/player30.jpg" },
-      { name: "_RabIs_", kpd: 1.0, role: "Активный игрок", img: "images/player31.jpg" },
-      { name: "_STALNOI_SOKOL_", kpd: 1.0, role: "Активный игрок", img: "images/player32.jpg" },
-      { name: "AAA0101", kpd: 1.0, role: "Активный игрок", img: "images/player33.jpg" },
-      { name: "CAHbl4_34", kpd: 1.0, role: "Активный игрок", img: "images/player34.jpg" },
-      { name: "Cme6acJlo", kpd: 1.0, role: "Активный игрок", img: "images/player35.jpg" },
-      { name: "druidv", kpd: 1.0, role: "Активный игрок", img: "images/player36.jpg" },
-      { name: "eXSoldier", kpd: 1.0, role: "Активный игрок", img: "images/player37.jpg" },
-      { name: "Lexa_23rus_1", kpd: 1.0, role: "Активный игрок", img: "images/player38.jpg" },
-      { name: "mat2777", kpd: 2.7, role: "Активный игрок", img: "images/player39.jpg" },
-      { name: "NikerTp", kpd: 1.0, role: "Активный игрок", img: "images/player40.jpg" },
-      { name: "Zarecevagor", kpd: 1.0, role: "Активный игрок", img: "images/player41.jpg" },
-      { name: "MPA4HblU_PACUDOK", kpd: 1.0, role: "Активный игрок", img: "images/player42.jpg" },
-      { name: "flamesmurf_TW", kpd: 8.1, role: "Активный игрок", img: "images/player43.jpg" },
-      { name: "BUGMaFia7", kpd: 2.6, role: "Активный игрок", img: "images/player44.jpg" },
-      { name: "___BAD__B0Y___", kpd: 8.3, role: "Активный игрок", img: "images/player45.jpg" }
-    ];
-
-    const container = document.getElementById('membersCards');
-    const searchInput = document.getElementById('searchInput');
-    const sortSelect = document.getElementById('sortSelect');
-
-    function getPlayerRank(name) {
-      const sorted = [...members].sort((a, b) => b.kpd - a.kpd);
-      return sorted.findIndex(p => p.name === name) + 1;
-    }
-
-    function openPlayerModal(player) {
-      const rank = getPlayerRank(player.name);
-      const total = members.length;
-      const percent = Math.round((rank / total) * 100);
-
-      document.getElementById('modalHeader').innerHTML = `
-        <h2 style="color:var(--primary);">${player.name}</h2>
-        <p style="color:#aaa;">${player.role}</p>
-      `;
-
-      document.getElementById('modalBody').innerHTML = `
-        <div style="text-align:center; margin-bottom: 1.5rem;">
-          <img src="${player.img}" alt="${player.name}" 
-               style="width:100%; max-height:220px; object-fit:cover; border-radius:12px;"
-               onerror="this.src='https://via.placeholder.com/400x220/00ff88/000?text=${player.name}'">
-        </div>
-
-        <div style="display:flex; justify-content:space-between; margin: 1.2rem 0;">
-          <div>
-            <strong>КПД</strong><br>
-            <span style="font-size:2.2rem; color:${getKpdColor(player.kpd)};">${player.kpd}/10</span>
-          </div>
-          <div>
-            <strong>Место в клане</strong><br>
-            <span style="font-size:2.2rem; color:var(--primary);">${rank} / ${total}</span>
-          </div>
-        </div>
-
-        <div style="margin: 1.5rem 0;">
-          <small>Позиция по КПД</small>
-          <div class="rank-bar">
-            <div class="rank-fill" style="width: ${percent}%"></div>
-          </div>
-          <small style="color:#aaa;">${percent}% от топа клана</small>
-        </div>
-
-        <div style="margin-top: 2rem;">
-          <strong>Медали и достижения</strong>
-          <div style="background:#1a1a1a; padding:1.2rem; border-radius:12px; margin-top:8px; text-align:center; color:#777;">
-            Медалей нету
-          </div>
-        </div>
-
-        <button onclick="closeModal()" style="margin-top:1.5rem; width:100%; padding:14px; background:#222; border:none; border-radius:8px; color:white; font-size:1.1rem; cursor:pointer;">
-          Закрыть
-        </button>
-      `;
-
-      document.getElementById('playerModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('playerModal').style.display = 'none';
-    }
-
-    function renderMembers(filteredMembers) {
-      container.innerHTML = '';
-      filteredMembers.forEach((m, index) => {
-        const max = 10;
-        const circumference = 2 * Math.PI * 52;
-        const offset = circumference - (m.kpd / max) * circumference;
-        const color = getKpdColor(m.kpd);
-
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.style.animationDelay = `${index * 60}ms`;
-
-        card.innerHTML = `
-          <img src="${m.img}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/300x180/00ff88/000?text=${m.name}'">
-          <div class="card-body">
-            <h3>${m.name}</h3>
-            <p style="color:#aaa; margin: 8px 0;">${m.role}</p>
-            <div class="kpd-circle">
-              <svg width="130" height="130">
-                <circle class="background" cx="65" cy="65" r="52"></circle>
-                <circle class="progress" cx="65" cy="65" r="52"
-                        stroke="${color}"
-                        style="--final-offset: ${offset};"></circle>
-              </svg>
-              <div class="kpd-text">${m.kpd}<span class="kpd-max">/10</span></div>
-            </div>
-            <div class="kpd-label">Коэффициент Полезности</div>
-          </div>
-        `;
-
-        card.addEventListener('click', () => openPlayerModal(m));
-        container.appendChild(card);
-      });
-    }
-
-    function filterAndSort() {
-      let filtered = [...members];
-      const searchTerm = searchInput.value.toLowerCase().trim();
-      if (searchTerm) filtered = filtered.filter(m => m.name.toLowerCase().includes(searchTerm));
-
-      const sortValue = sortSelect.value;
-      if (sortValue === 'name-asc') filtered.sort((a,b) => a.name.localeCompare(b.name));
-      if (sortValue === 'name-desc') filtered.sort((a,b) => b.name.localeCompare(a.name));
-      if (sortValue === 'kpd-desc') filtered.sort((a,b) => b.kpd - a.kpd);
-      if (sortValue === 'kpd-asc') filtered.sort((a,b) => a.kpd - b.kpd);
-
-      renderMembers(filtered);
-    }
-
-    searchInput.addEventListener('input', filterAndSort);
-    sortSelect.addEventListener('change', filterAndSort);
-
-    renderMembers(members);
-
-    // Таймер 168 часов
-    function startCountdown() {
-      const countdownEl = document.getElementById('countdown');
-      let time = 168 * 3600;
-      setInterval(() => {
-        time--;
-        const h = Math.floor(time / 3600);
-        const m = Math.floor((time % 3600) / 60);
-        const s = time % 60;
-        countdownEl.textContent = `До сброса: ${h.toString().padStart(3,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-      }, 1000);
-    }
-    startCountdown();
-  </script>
 </body>
 </html>
