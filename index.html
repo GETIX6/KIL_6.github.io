@@ -3,116 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Клан [KIL_6] | Официальный сайт</title>
+  <title>Клан [KIL_6] | Официальный сайт THE SHIELD</title>
   <style>
     :root {
       --primary: #00ff88;
-      --dark: #0a0a0a;
-      --gray: #1a1a1a;
+      --primary-dark: #00cc66;
+      --dark: #0a0a0f;
+      --glass-bg: rgba(26, 26, 31, 0.68);
+      --glass-border: rgba(255, 255, 255, 0.09);
     }
   
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: linear-gradient(135deg, #0a0a0f 0%, #12121a 100%);
       color: #eee;
       min-height: 100vh;
     }
+
     header {
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(10, 10, 15, 0.94);
       padding: 1rem 0;
       border-bottom: 3px solid var(--primary);
       position: sticky;
       top: 0;
       z-index: 100;
+      backdrop-filter: blur(22px);
     }
+    
     .nav {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
       display: flex;
       justify-content: center;
-      gap: 2.8rem;
+      gap: 2.6rem;
       flex-wrap: wrap;
+      padding: 0 1rem;
     }
+    
     .tab {
-      padding: 14px 0;
+      padding: 16px 0;
       background: transparent;
       border: none;
       color: #888;
       font-size: 1.15rem;
       font-weight: 500;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.35s;
       position: relative;
     }
+    
     .tab.active {
       color: var(--primary);
+      text-shadow: 0 0 14px rgba(0, 255, 136, 0.65);
     }
+    
     .tab.active::after {
       content: '';
       position: absolute;
-      bottom: -2px;
+      bottom: -3px;
       left: 0;
       width: 100%;
-      height: 3px;
-      background: var(--primary);
+      height: 3.5px;
+      background: linear-gradient(to right, var(--primary), var(--primary-dark));
+      box-shadow: 0 0 18px var(--primary);
     }
+
     .container {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      max-width: 1280px;
+      margin: 2.2rem auto;
+      padding: 0 1.2rem;
     }
+    
     .content {
       display: none;
-      animation: fadeInUp 0.7s ease forwards;
+      animation: fadeInUp 0.75s forwards;
     }
+    
     .content.active {
       display: block;
     }
+    
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(45px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .season-banner, .stats-map {
+
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(22px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .season-banner {
       width: 100%;
-      max-width: 1100px;
-      margin: 2rem auto;
-      border-radius: 16px;
+      max-width: 1150px;
+      margin: 1.8rem auto;
+      border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-      border: 2px solid var(--primary);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+      border: 2.5px solid var(--primary);
     }
+
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(305px, 1fr));
+      gap: 2.1rem;
     }
+    
     .card {
-      background: var(--gray);
-      border-radius: 16px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      border-radius: 18px;
       overflow: hidden;
-      transition: all 0.3s;
-      border: 1px solid #333;
+      transition: all 0.45s;
+      border: 1px solid var(--glass-border);
       cursor: pointer;
     }
+    
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 30px rgba(0, 255, 136, 0.2);
+      transform: translateY(-14px);
+      box-shadow: 0 28px 55px rgba(0, 255, 136, 0.18);
+      border-color: var(--primary);
     }
-    /* ====================== МЕДАЛИ ====================== */
+
+    .card img {
+      width: 100%;
+      height: 185px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1.55rem;
+      text-align: center;
+    }
+
     .medals-container {
       display: flex;
-      gap: 8px;
+      gap: 7px;
       justify-content: center;
       flex-wrap: wrap;
-      margin: 10px 0 8px;
+      margin: 12px 0 6px;
     }
+    
     .medal {
       width: 44px;
       height: 44px;
@@ -125,264 +160,351 @@
       position: relative;
       transition: all 0.3s;
       border: 2.5px solid;
+      background: rgba(0,0,0,0.45);
+      box-shadow: 0 0 16px currentColor;
     }
+    
     .medal:hover {
-      transform: scale(1.2);
-      z-index: 5;
+      transform: scale(1.28);
+      z-index: 10;
     }
-    .medal.rare { border-color: #00ccff; box-shadow: 0 0 12px #00ccff; }
-    .medal.mythic { border-color: #ff4444; box-shadow: 0 0 14px #ff4444; }
-    .medal.legendary { border-color: #ffd700; box-shadow: 0 0 16px #ffd700; }
+    
+    .medal.rare { border-color: #00ccff; box-shadow: 0 0 20px #00ccff; }
+    .medal.mythic { border-color: #ff4444; box-shadow: 0 0 20px #ff4444; }
+    .medal.legendary { border-color: #ffd700; box-shadow: 0 0 22px #ffd700; }
+
     .medal .tooltip {
       visibility: hidden;
       position: absolute;
-      bottom: 120%;
+      bottom: 125%;
       left: 50%;
       transform: translateX(-50%);
-      background: #0f0f0f;
+      background: rgba(15,15,15,0.96);
       border: 2px solid var(--primary);
-      padding: 12px 16px;
-      border-radius: 10px;
-      width: 240px;
-      z-index: 20;
-      font-size: 0.92rem;
+      padding: 13px 17px;
+      border-radius: 11px;
+      width: 245px;
+      z-index: 30;
+      font-size: 0.91rem;
       text-align: center;
       opacity: 0;
-      transition: all 0.25s;
+      transition: all 0.28s;
       pointer-events: none;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.75);
     }
-    .medal:hover .tooltip {
-      visibility: visible;
-      opacity: 1;
-    }
-    /* Модальное окно */
+    
+    .medal:hover .tooltip { visibility: visible; opacity: 1; }
+
     .modal {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85);
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
       z-index: 1000;
       align-items: center;
       justify-content: center;
     }
+    
     .modal-content {
-      background: #111;
-      width: 90%;
-      max-width: 520px;
-      border-radius: 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(26px);
+      width: 92%;
+      max-width: 620px;
+      border-radius: 22px;
       border: 3px solid var(--primary);
       overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 35px 80px rgba(0, 255, 136, 0.22);
     }
+    
     .modal-header {
-      padding: 1.5rem;
-      background: linear-gradient(90deg, #1a1a1a, #222);
+      padding: 1.85rem;
+      background: linear-gradient(90deg, rgba(26,26,31,0.92), rgba(34,34,42,0.92));
       text-align: center;
-      border-bottom: 2px solid var(--primary);
+      border-bottom: 2.5px solid var(--primary);
     }
+    
     .modal-body {
-      padding: 1.8rem;
+      padding: 2.1rem;
     }
-    .modal-close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #888;
-    }
-    /* Фильтры */
+
     .filters {
       display: flex;
-      gap: 15px;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 12px;
       align-items: center;
     }
+    
     .search-input {
-      padding: 10px 16px;
+      padding: 11px 17px;
       background: #111;
       border: 2px solid #333;
-      border-radius: 8px;
+      border-radius: 9px;
       color: white;
-      width: 280px;
+      width: 260px;
+      transition: all 0.3s;
     }
+    
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 14px rgba(0,255,136,0.25);
+      outline: none;
+    }
+    
     select {
-      padding: 10px 14px;
+      padding: 10px 15px;
       background: #111;
       border: 2px solid #333;
-      border-radius: 8px;
+      border-radius: 9px;
       color: white;
     }
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .card-body {
-      padding: 1.5rem;
-      text-align: center;
-    }
+
     .kpd-circle {
-      width: 130px;
-      height: 130px;
-      margin: 15px auto;
+      width: 132px;
+      height: 132px;
+      margin: 16px auto;
       position: relative;
     }
+    
     .kpd-circle svg { transform: rotate(-90deg); }
+    
     .kpd-circle .background {
       fill: none;
       stroke: #333;
-      stroke-width: 14;
+      stroke-width: 15;
     }
+    
     .kpd-circle .progress {
       fill: none;
-      stroke-width: 14;
+      stroke-width: 15;
       stroke-linecap: round;
-      stroke-dasharray: 377;
-      stroke-dashoffset: 377;
-      animation: progressAnimation 2s ease forwards;
+      stroke-dasharray: 385;
+      stroke-dashoffset: 385;
+      animation: progressAnimation 2.1s ease forwards;
+      filter: drop-shadow(0 0 9px currentColor);
     }
+    
     @keyframes progressAnimation {
       to { stroke-dashoffset: var(--final-offset); }
     }
+    
     .kpd-text {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 2.4rem;
-      font-weight: bold;
-      color: white;
+      font-size: 2.45rem;
+      font-weight: 700;
     }
-    .kpd-max { font-size: 1.1rem; color: #666; }
-    .kpd-label { color: #aaa; font-size: 1rem; margin-top: 8px; }
+
     .clan-progress {
-      background: linear-gradient(145deg, #1a1a1a, #111);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
       border: 3px solid var(--primary);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2.5rem;
+      border-radius: 22px;
+      padding: 2.15rem;
+      margin-bottom: 2.6rem;
       text-align: center;
     }
+    
     .big-progress-bar {
-      height: 28px;
+      height: 29px;
       background: #222;
       border-radius: 999px;
       overflow: hidden;
-      margin: 15px 0;
+      margin: 16px 0;
       border: 2px solid #333;
     }
+    
     .big-progress-fill {
       height: 100%;
       background: linear-gradient(90deg, #00ff88, #00cc66);
       border-radius: 999px;
-      transition: width 2s ease;
+      transition: width 2.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 0 24px var(--primary);
     }
+
     .mission {
-      background: #1a1a1a;
-      border-radius: 14px;
-      padding: 1.4rem;
-      margin-bottom: 1.2rem;
-      border-left: 5px solid var(--primary);
-      transition: all 0.3s;
+      background: var(--glass-bg);
+      backdrop-filter: blur(17px);
+      border-radius: 15px;
+      padding: 1.45rem 1.6rem;
+      margin-bottom: 1.25rem;
+      border-left: 6px solid var(--primary);
+      transition: all 0.35s;
     }
+    
     .mission:hover {
-      transform: translateX(8px);
-      background: #222;
+      transform: translateX(9px);
     }
-    .mission-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-    .mission-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-    .progress-bar {
-      height: 10px;
-      background: #333;
-      border-radius: 999px;
-      overflow: hidden;
-      margin: 10px 0;
-    }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #00ff88, #00cc66);
-      border-radius: 999px;
-      transition: width 1.5s ease;
-    }
-    .mission-footer {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.95rem;
-      color: #aaa;
-    }
+
     .timer {
       color: #ff4444;
-      font-weight: bold;
+      font-weight: 700;
       text-align: center;
-      font-size: 1.45rem;
-      margin: 1.5rem 0 2.5rem;
+      font-size: 1.5rem;
+      margin: 1.6rem 0 2.6rem;
+      text-shadow: 0 0 12px rgba(255, 68, 68, 0.55);
     }
+
     .stats-main {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
       max-width: 1100px;
       margin: 2rem auto;
     }
+    
     .stat-card {
       background: #111;
       border-radius: 16px;
-      padding: 1.8rem 1.5rem;
+      padding: 2rem 1.8rem;
       text-align: center;
       border: 3px solid;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
       transition: all 0.3s;
     }
+    
     .stat-card:hover {
       transform: translateY(-8px);
     }
-    .stat-card.x { border-color: #00ff88; }
-    .stat-card.viii { border-color: #ffd700; }
-    .stat-card.vi { border-color: #00ccff; }
+    
+    .stat-card.x { border-color: #00ff88; box-shadow: 0 0 25px rgba(0, 255, 136, 0.3); }
+    .stat-card.viii { border-color: #ffd700; box-shadow: 0 0 25px rgba(255, 215, 0, 0.3); }
+    .stat-card.vi { border-color: #00ccff; box-shadow: 0 0 25px rgba(0, 204, 255, 0.3); }
+    
     .stat-card h3 {
-      color: #ffd700;
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
+      color: #ffffff;
+      margin-bottom: 1rem;
+      font-size: 1.35rem;
+      font-weight: 600;
     }
+    
     .stat-number {
-      font-size: 3.5rem;
-      font-weight: bold;
-      margin: 0.5rem 0;
+      font-size: 4.2rem;
+      font-weight: 700;
+      line-height: 1;
     }
+    
+    .stat-card.x .stat-number { color: #00ff88; text-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88; }
+    .stat-card.viii .stat-number { color: #ffd700; text-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700; }
+    .stat-card.vi .stat-number { color: #00ccff; text-shadow: 0 0 15px #00ccff, 0 0 30px #00ccff; }
+
     .buildings-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.2rem;
-      max-width: 1100px;
-      margin: 3rem auto 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+      gap: 1.25rem;
+      max-width: 1120px;
+      margin: 3.2rem auto 2.2rem;
     }
+    
     .building-card {
-      background: #111;
-      padding: 1.4rem;
-      border-radius: 14px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(17px);
+      padding: 1.5rem;
+      border-radius: 15px;
       text-align: center;
       border: 2px solid #222;
-      transition: all 0.3s;
+      transition: all 0.35s;
     }
+    
     .building-card:hover {
       border-color: var(--primary);
-      transform: translateY(-5px);
+      transform: translateY(-6px);
+    }
+
+    /* ==================== АНИМИРОВАННАЯ ЗАГРУЗКА ==================== */
+    .tab-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .loader-spinner {
+      width: 70px;
+      height: 70px;
+      border: 5px solid rgba(0, 255, 136, 0.2);
+      border-top: 5px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .loader-text {
+      color: var(--primary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-shadow: 0 0 10px var(--primary);
+    }
+
+    /* ==================== ПРЕМИУМ СРАВНЕНИЕ ИГРОКОВ ==================== */
+    .compare-result {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.2rem;
+    }
+    
+    .compare-player-card {
+      background: #0f0f14;
+      border-radius: 18px;
+      padding: 2.4rem 1.8rem;
+      text-align: center;
+      border: 3px solid #222;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    
+    .compare-player-card.winner {
+      border-color: #00ff88;
+      box-shadow: 0 0 35px rgba(0, 255, 136, 0.35);
+    }
+    
+    .compare-player-name {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 1.4rem;
+    }
+    
+    .compare-kpd {
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1;
+      margin: 1rem 0 0.6rem;
+    }
+    
+    .compare-label {
+      color: #888;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .compare-role {
+      color: #aaa;
+      font-size: 1.1rem;
+      margin-top: 0.6rem;
     }
   </style>
 </head>
 <body>
+  <!-- АНИМИРОВАННАЯ ЗАГРУЗКА -->
+  <div id="tabLoader" class="tab-loader">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">Загрузка...</div>
+  </div>
+
   <header>
     <nav class="nav">
       <button class="tab active" data-tab="home">Главная</button>
@@ -392,161 +514,226 @@
       <button class="tab" data-tab="rules">Правила</button>
     </nav>
   </header>
+
   <div class="container">
     <!-- Главная -->
     <div id="home" class="content active">
-      <h1 style="text-align:center; margin: 2rem 0 1rem; font-size: 3rem;">
+      <h1 style="text-align:center; margin: 2.1rem 0 1.1rem; font-size: 3.15rem; text-shadow: 0 0 22px rgba(0,255,136,0.55);">
         <span style="color:var(--primary)">[KIL_6] THE SHIELD</span>
       </h1>
-      <img src="images/season-banner.png" alt="Сезон" class="season-banner"
-           onerror="this.src='https://via.placeholder.com/1000x250/111827/00ff88?text=Сезон+Рождение+Бури';">
+
+      <img src="images/natisk-special.png" 
+           alt="Натиск Специальный Выпуск" 
+           class="season-banner"
+           style="max-height: 440px; object-fit: cover;">
+
+      <div style="text-align:center; margin: 1.4rem 0 2.3rem; color:#aaa; font-size:1.15rem;">
+        <strong style="color:#00ff88;"></strong><br>
+        
+      </div>
     </div>
+
     <!-- Состав -->
     <div id="members" class="content">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.6rem; flex-wrap: wrap; gap: 16px;">
         <h2>Состав клана</h2>
-        <div class="filters">
-          <input type="text" id="searchInput" class="search-input" placeholder="Поиск по нику...">
-          <select id="sortSelect">
-            <option value="default">Сортировка</option>
-            <option value="name-asc">По алфавиту (А-Я)</option>
-            <option value="name-desc">По алфавиту (Я-А)</option>
-            <option value="kpd-desc">КПД ↓</option>
-            <option value="kpd-asc">КПД ↑</option>
-          </select>
+        
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <button onclick="openCompareModal()" 
+                  style="background: #111; border: 2.5px solid var(--primary); color: var(--primary); padding: 11px 20px; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.95rem;">
+            ⚔️ Сравнить игроков
+          </button>
+          
+          <div class="filters">
+            <input type="text" id="searchInput" class="search-input" placeholder="Поиск по нику...">
+            <select id="sortSelect">
+              <option value="default">Сортировка</option>
+              <option value="name-asc">По алфавиту (А-Я)</option>
+              <option value="name-desc">По алфавиту (Я-А)</option>
+              <option value="kpd-desc">КПД ↓</option>
+              <option value="kpd-asc">КПД ↑</option>
+            </select>
+          </div>
         </div>
       </div>
+      
       <div class="cards" id="membersCards"></div>
     </div>
+
     <!-- Прогрессия -->
     <div id="progress" class="content">
-      <h2 style="text-align:center; margin-bottom: 0.5rem;">Клановая Прогрессия</h2>
-      <div class="timer" id="countdown">До сброса: 167:59:59</div>
-      <div class="clan-progress">
-        <div class="progress-title">ПРОГРЕСС КЛАНА ЗА НЕДЕЛЮ</div>
+      <h2 style="text-align:center; margin-bottom:0.6rem;">Клановая Прогрессия</h2>
+      <div class="timer" id="countdown">Загрузка...</div>
+      
+      <div class="clan-progress glass">
+        <div style="font-weight:600; margin-bottom:9px;">ПРОГРЕСС КЛАНА ЗА НЕДЕЛЮ</div>
         <div class="big-progress-bar">
-          <div class="big-progress-fill" style="width: 0%"></div>
+          <div class="big-progress-fill" style="width:0%"></div>
         </div>
-        <div style="display: flex; justify-content: space-between; font-size: 1.1rem;">
+        <div style="display:flex; justify-content:space-between; font-size:1.12rem;">
           <span>Очки прогрессии: <strong>0 / 10000</strong></span>
           <span><strong>0%</strong></span>
         </div>
       </div>
-      <div class="mission">
+
+      <div class="mission glass">
         <div class="mission-header">
           <div class="mission-title">Победы в Вылозки 6/8/10</div>
           <div>0 / 70</div>
         </div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <div class="mission-footer">
           <span>Награда: +2000 очков</span>
           <span>0%</span>
         </div>
       </div>
-      <div class="mission">
+      
+      <div class="mission glass">
         <div class="mission-header">
           <div class="mission-title">Урон в вылозках</div>
           <div>0 / 20000</div>
         </div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <div class="mission-footer">
           <span>Награда: +2000 очков</span>
           <span>0%</span>
         </div>
       </div>
-      <div class="mission">
+      
+      <div class="mission glass">
         <div class="mission-header">
           <div class="mission-title">Свет в вылозках</div>
           <div>0 / 20000</div>
         </div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <div class="mission-footer">
           <span>Награда: +2000 очков</span>
           <span>0%</span>
         </div>
       </div>
-      <div class="mission">
+      
+      <div class="mission glass">
         <div class="mission-header">
           <div class="mission-title">Фраги</div>
           <div>0 / 25</div>
         </div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <div class="mission-footer">
           <span>Награда: +2000 очков</span>
           <span>0%</span>
         </div>
       </div>
-      <div class="mission">
+      
+      <div class="mission glass">
         <div class="mission-header">
           <div class="mission-title">Активность клана</div>
           <div>0 / 7</div>
         </div>
-        <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
         <div class="mission-footer">
           <span>Награда: +2000 очков</span>
           <span>0%</span>
         </div>
       </div>
     </div>
+
     <!-- Статистика -->
     <div id="stats" class="content">
-      <h2 style="margin-bottom: 1.5rem; text-align:center;">Статистика клана</h2>
+      <h2 style="margin-bottom:1.6rem; text-align:center;">Статистика клана</h2>
       <img src="images/stats-map.png" alt="Карта базы" class="stats-map"
-           onerror="this.src='https://via.placeholder.com/1100x620/111827/00ff88?text=Карта+Базы';">
+           onerror="this.src='https://via.placeholder.com/1120x620/111827/00ff88?text=Карта+Базы';">
+      
       <div class="stats-main">
-        <div class="stat-card x">
+        <div class="stat-card x glass">
           <h3>Уровень X</h3>
-          <div class="stat-number" style="color:#00ff88;">1086</div>
+          <div class="stat-number" data-target="1086" style="color:#00ff88; text-shadow: 0 0 15px #00ff88, 0 0 30px #00ff88;">0</div>
         </div>
-        <div class="stat-card viii">
+        <div class="stat-card viii glass">
           <h3>Уровень VIII</h3>
-          <div class="stat-number" style="color:#ffd700;">1254</div>
+          <div class="stat-number" data-target="1254" style="color:#ffd700; text-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700;">0</div>
         </div>
-        <div class="stat-card vi">
+        <div class="stat-card vi glass">
           <h3>Уровень VI</h3>
-          <div class="stat-number" style="color:#00ccff;">1161</div>
+          <div class="stat-number" data-target="1161" style="color:#00ccff; text-shadow: 0 0 15px #00ccff, 0 0 30px #00ccff;">0</div>
         </div>
       </div>
-      <h3 style="text-align:center; margin: 2.5rem 0 1.5rem; color:var(--primary);">Здания базы</h3>
+
+      <h3 style="text-align:center; margin:2.6rem 0 1.6rem; color:var(--primary);">Здания базы</h3>
       <div class="buildings-grid">
-        <div class="building-card"><strong>Командный центр</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Танкодром</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Трофейная бригада</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Автотранспортная часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Финансовая часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Военное училище</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Учебная часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Служба тыла</strong><br><span style="color:#00ff88;">Уровень X</span></div>
-        <div class="building-card"><strong>Артиллерийский дивизион</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card glass"><strong>Командный центр</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card glass"><strong>Танкодром</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card glass"><strong>Трофейная бригада</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card glass"><strong>Автотранспортная часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card glass"><strong>Финансовая часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card glass"><strong>Военное училище</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card glass"><strong>Учебная часть</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card glass"><strong>Служба тыла</strong><br><span style="color:#00ff88;">Уровень X</span></div>
+        <div class="building-card glass"><strong>Артиллерийский дивизион</strong><br><span style="color:#00ff88;">Уровень X</span></div>
       </div>
     </div>
+
     <!-- Правила -->
     <div id="rules" class="content">
-      <h2 style="margin-bottom: 2rem; text-align:center;">Правила клана</h2>
-      <div style="background: #111; padding: 2rem; border-radius: 16px; border: 2px solid var(--primary); max-width: 1000px; margin: 0 auto;">
-        <h2 style="text-align:center; margin-bottom: 2rem; color:#00ff88;">Требуются бойцы под АБС формат</h2>
-        <p style="margin-bottom: 1.5rem;">1. От 5к боёв - МИНИМУМ 7 актуальных топов (возможно исключение)</p>
-        <p style="margin-bottom: 1.5rem;">2. Общий процент — 50% (возможно исключение)</p>
-        <p style="margin-bottom: 1.5rem;">3. Наличие танков: CS-63 Wilk, ЧИФ, Concept No. 5, ИС-7, ЕБР, КС-43, ОРSO 60ТП, FV215b, T57X3ВИ, ВЗ 111 А5, Об.260, Об.278, т110е5, ТАЙП 5 ХЕВИ, ТЭТ100, МЕРКАВА, 100ЛТ, МАНТИКОР, Е3, МИНОТАВР.</p>
-        <p style="margin-bottom: 1.5rem;">4. Активная игра ИВЕНТЫ/ГК/АБС/ЧЕМПИОНКА - ПО МЕРЕ ВОЗМОЖНОСТИ</p>
-        <p style="margin-bottom: 1.5rem;">5. DMG Боев не ниже 2K</p>
-        <p style="margin-bottom: 1.5rem;">6. WN8 от 1800</p>
-        <p style="margin-bottom: 1.5rem;">7. Запустил TEAMSPEAK зашёл в игру - TS3v.RU:16787, 145.239.26.75:8414, kil6.ts3.se</p>
-        <p style="margin-bottom: 1.5rem;">8. Адекватность • Объективность • Целеустремлённость</p>
-        <p style="margin-bottom: 1.5rem;">9. Если вы полезны СООБЩЕСТВУ могут быть исключения</p>
-        <p style="margin-bottom: 1.5rem;">10. От НАС 1) Плюшки 2) Укрепы, гк, спринты. 3) Помощь с ЛБЗ и наградой голдой за актив в укрепе и помощь в развитие клана.</p>
+      <h2 style="margin-bottom:2.1rem; text-align:center;">Правила клана</h2>
+      <div class="rules-container glass" style="background: var(--glass-bg); backdrop-filter: blur(20px); padding: 2.3rem; border-radius: 18px; border: 2.5px solid var(--primary); max-width: 1020px; margin: 0 auto;">
+        <h2 style="text-align:center; margin-bottom:2.1rem; color:#00ff88;">Требуются бойцы под АБС формат</h2>
+        <p style="margin-bottom:1.55rem;">1. От 5к боёв — минимум 7 актуальных топов</p>
+        <p style="margin-bottom:1.55rem;">2. Общий процент — 50%+</p>
+        <p style="margin-bottom:1.55rem;">3. Обязательные танки: CS-63, ЧИФ, Concept No.5, ИС-7, ЕБР, КС-43, ОРSO 60ТП, FV215b, T57X3ВИ, ВЗ 111 А5, Об.260, Об.278, т110е5, ТАЙП 5 ХЕВИ, ТЭТ100, МЕРКАВА, 100ЛТ, МАНТИКОР, Е3, МИНОТАВР</p>
+        <p style="margin-bottom:1.55rem;">4. Активность в ИВЕНТЫ / ГК / АБС / ЧЕМПИОНКА</p>
+        <p style="margin-bottom:1.55rem;">5. DMG боёв не ниже 2000</p>
+        <p style="margin-bottom:1.55rem;">6. WN8 от 1800</p>
+        <p style="margin-bottom:1.55rem;">7. Teamspeak обязателен</p>
+        <p style="margin-bottom:1.55rem;">8. Адекватность и целеустремлённость</p>
       </div>
     </div>
   </div>
-  <!-- МОДАЛЬНОЕ ОКНО -->
+
+  <!-- МОДАЛЬНОЕ ОКНО ИГРОКА -->
   <div id="playerModal" class="modal">
-    <div class="modal-content">
-      <span class="modal-close" onclick="closeModal()">×</span>
+    <div class="modal-content glass">
+      <span onclick="closeModal()" style="position:absolute; top:18px; right:24px; font-size:2.3rem; cursor:pointer; color:#888;">×</span>
       <div class="modal-header" id="modalHeader"></div>
       <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
+
+  <!-- ПРЕМИУМ СРАВНЕНИЕ ИГРОКОВ -->
+  <div id="compareModal" class="modal">
+    <div class="modal-content glass" style="max-width: 950px; border: 3px solid var(--primary);">
+      <span onclick="closeCompareModal()" style="position:absolute; top:18px; right:24px; font-size:2.3rem; cursor:pointer; color:#888;">×</span>
+      
+      <div class="modal-header">
+        <h2 style="color:#00ff88; margin:0;">Сравнение игроков</h2>
+      </div>
+      
+      <div class="modal-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; margin-bottom: 1.8rem;">
+          <div>
+            <label style="display:block; margin-bottom:8px; color:#aaa; font-weight:600;">Игрок 1</label>
+            <select id="player1Select" style="width:100%; padding:13px; background:#111; border:2px solid #333; color:white; border-radius:10px;"></select>
+          </div>
+          <div>
+            <label style="display:block; margin-bottom:8px; color:#aaa; font-weight:600;">Игрок 2</label>
+            <select id="player2Select" style="width:100%; padding:13px; background:#111; border:2px solid #333; color:white; border-radius:10px;"></select>
+          </div>
+        </div>
+
+        <button onclick="comparePlayers()" 
+                style="width:100%; padding:16px; background:#00ff88; color:black; border:none; border-radius:12px; font-weight:800; font-size:1.2rem; cursor:pointer; box-shadow: 0 0 25px rgba(0,255,136,0.5);">
+          Сравнить
+        </button>
+
+        <div id="compareResult" style="margin-top: 2.4rem; display: none;">
+          <div class="compare-result" id="compareContainer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    const loader = document.getElementById('tabLoader');
+
     function getKpdColor(kpd) {
       if (kpd >= 10) return "#c026d3";
       if (kpd >= 7) return "#00ff88";
@@ -554,40 +741,34 @@
       return "#ff4444";
     }
 
-    // Переключение вкладок
     document.querySelectorAll('.tab').forEach(tab => {
       tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-        document.getElementById(tab.dataset.tab).classList.add('active');
+        const targetTab = tab.dataset.tab;
+        loader.style.display = 'flex';
+
+        setTimeout(() => {
+          loader.style.display = 'none';
+
+          document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+
+          document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+          const content = document.getElementById(targetTab);
+          content.classList.add('active');
+
+          if (targetTab === 'stats') {
+            setTimeout(animateStatCounters, 400);
+          }
+        }, 2000);
       });
     });
 
-    // ==================== ИГРОКИ С МЕДАЛЯМИ (ИСПРАВЛЕНО) ====================
     const members = [
-      { name: "evgecshok", kpd: 10.0, role: "Лидер", img: "images/player1.jpg",
-        medals: [
-          {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"},
-          {icon:"", name:"", desc:"", rarity:""}
-        ]},
-      { name: "surprizZze", kpd: 10.0, role: "Активный игрок", img: "images/player3.jpg",
-        medals: [
-          {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"},
-          {icon:"", name:"", desc:"", rarity:""}
-        ]},
-      { name: "flamesmurf_TW", kpd: 10.0, role: "Активный игрок", img: "images/player43.jpg",
-        medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
-      { name: "___BAD__B0Y___", kpd: 10.0, role: "Активный игрок", img: "images/player45.jpg",
-        medals: [
-          {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"},
-          {icon:"", name:"", desc:"", rarity:""}
-        ]},
-      { name: "HE_IIpoJIUL", kpd: 7.9, role: "Активный игрок", img: "images/player3.jpg",
-        medals: [
-          {icon:"", name:"Балтика", desc:"Он такой еденственный", rarity:"legendary"},
-          {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}
-        ] },
+      { name: "evgecshok", kpd: 10.0, role: "Лидер", img: "images/player1.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
+      { name: "surprizZze", kpd: 10.0, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
+      { name: "flamesmurf_TW", kpd: 10.0, role: "Активный игрок", img: "images/player43.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
+      { name: "___BAD__B0Y___", kpd: 10.0, role: "Активный игрок", img: "images/player45.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
+      { name: "HE_IIpoJIUL", kpd: 7.9, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Балтика", desc:"Он такой еденственный", rarity:"legendary"}, {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
       { name: "oxana2009", kpd: 1.0, role: "Активный игрок", img: "images/player4.jpg", medals: [] },
       { name: "Byaka2311", kpd: 3.0, role: "Активный игрок", img: "images/player5.jpg", medals: [] },
       { name: "CaMyPau_PA", kpd: 2.5, role: "Активный игрок", img: "images/player6.jpg", medals: [] },
@@ -638,41 +819,34 @@
     function renderMembers(filteredMembers) {
       container.innerHTML = '';
       filteredMembers.forEach((m, index) => {
-        const max = 10;
-        const circumference = 2 * Math.PI * 52;
-        const offset = circumference - (m.kpd / max) * circumference;
+        const offset = 385 - (m.kpd / 10) * 385;
         const color = getKpdColor(m.kpd);
         
         let medalsHTML = '';
         if (m.medals && m.medals.length > 0) {
-          const validMedals = m.medals.filter(medal => medal && medal.name);
-          if (validMedals.length > 0) {
-            medalsHTML = `<div class="medals-container">` +
-              validMedals.map(medal => `
-                <div class="medal ${medal.rarity}">
-                  ${medal.icon || ''}
-                  <div class="tooltip">
-                    <strong>${medal.name}</strong><br>
-                    ${medal.desc || ''}
-                  </div>
-                </div>
-              `).join('') + `</div>`;
+          const valid = m.medals.filter(medal => medal && medal.name);
+          if (valid.length > 0) {
+            medalsHTML = `<div class="medals-container">` + valid.map(medal => `
+              <div class="medal ${medal.rarity}">
+                ${medal.icon || ''}
+                <div class="tooltip"><strong>${medal.name}</strong><br>${medal.desc || ''}</div>
+              </div>`).join('') + `</div>`;
           }
         }
 
         const card = document.createElement('div');
-        card.className = 'card';
-        card.style.animationDelay = `${index * 60}ms`;
+        card.className = 'card glass';
+        card.style.animationDelay = `${index * 55}ms`;
         card.innerHTML = `
-          <img src="${m.img}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/300x180/00ff88/000?text=${m.name}'">
+          <img src="${m.img}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/300x185/00ff88/000?text=${m.name}'">
           <div class="card-body">
             <h3>${m.name}</h3>
-            <p style="color:#aaa; margin: 8px 0;">${m.role}</p>
+            <p style="color:#aaa; margin:8px 0;">${m.role}</p>
             ${medalsHTML}
             <div class="kpd-circle">
-              <svg width="130" height="130">
-                <circle class="background" cx="65" cy="65" r="52"></circle>
-                <circle class="progress" cx="65" cy="65" r="52" stroke="${color}" style="--final-offset: ${offset};"></circle>
+              <svg width="132" height="132">
+                <circle class="background" cx="66" cy="66" r="52"></circle>
+                <circle class="progress" cx="66" cy="66" r="52" stroke="${color}" style="--final-offset: ${offset};"></circle>
               </svg>
               <div class="kpd-text">${m.kpd}<span class="kpd-max">/10</span></div>
             </div>
@@ -690,50 +864,39 @@
       const body = document.getElementById('modalBody');
 
       header.innerHTML = `
-        <h2 style="color: var(--primary); margin:0;">${player.name}</h2>
+        <h2 style="color:var(--primary); margin:0; text-shadow:0 0 12px rgba(0,255,136,0.5);">${player.name}</h2>
         <p style="color:#aaa; margin:8px 0 0;">${player.role}</p>
       `;
 
-      const max = 10;
-      const circumference = 2 * Math.PI * 52;
-      const offset = circumference - (player.kpd / max) * circumference;
+      const offset = 385 - (player.kpd / 10) * 385;
       const color = getKpdColor(player.kpd);
 
       let medalsHTML = '';
       if (player.medals && player.medals.length > 0) {
-        const validMedals = player.medals.filter(medal => medal && medal.name);
-        if (validMedals.length > 0) {
-          medalsHTML = `<div class="medals-container" style="margin: 20px 0; justify-content:center;">` +
-            validMedals.map(medal => `
-              <div class="medal ${medal.rarity}">
-                ${medal.icon || '🏅'}
-                <div class="tooltip">
-                  <strong>${medal.name}</strong><br>
-                  ${medal.desc || ''}
-                </div>
-              </div>
-            `).join('') + `</div>`;
+        const valid = player.medals.filter(m => m && m.name);
+        if (valid.length > 0) {
+          medalsHTML = `<div class="medals-container" style="margin:22px 0; justify-content:center;">` + valid.map(m => `
+            <div class="medal ${m.rarity}">
+              ${m.icon || '🏅'}
+              <div class="tooltip"><strong>${m.name}</strong><br>${m.desc || ''}</div>
+            </div>`).join('') + `</div>`;
         }
       }
 
       body.innerHTML = `
         <div style="text-align:center;">
           ${medalsHTML}
-          <div class="kpd-circle" style="margin: 25px auto;">
-            <svg width="130" height="130">
-              <circle class="background" cx="65" cy="65" r="52"></circle>
-              <circle class="progress" cx="65" cy="65" r="52" stroke="${color}" 
-                      style="--final-offset: ${offset}; stroke-dashoffset: ${offset};"></circle>
+          <div class="kpd-circle" style="margin:28px auto;">
+            <svg width="132" height="132">
+              <circle class="background" cx="66" cy="66" r="52"></circle>
+              <circle class="progress" cx="66" cy="66" r="52" stroke="${color}" style="--final-offset:${offset}; stroke-dashoffset:${offset};"></circle>
             </svg>
             <div class="kpd-text">${player.kpd}<span class="kpd-max">/10</span></div>
           </div>
           <div class="kpd-label">Коэффициент Полезности</div>
-          <p style="margin-top:25px; color:#888; font-size:0.95rem;">
-            Подробная статистика игрока будет добавлена позже
-          </p>
+          <p style="margin-top:26px; color:#888; font-size:0.95rem;">Подробная статистика будет добавлена позже</p>
         </div>
       `;
-
       modal.style.display = 'flex';
     }
 
@@ -741,23 +904,20 @@
       document.getElementById('playerModal').style.display = 'none';
     }
 
-    // Закрытие модалки по клику на фон
-    document.getElementById('playerModal').addEventListener('click', function(e) {
-      if (e.target.id === 'playerModal') {
-        closeModal();
-      }
+    document.getElementById('playerModal').addEventListener('click', e => {
+      if (e.target.id === 'playerModal') closeModal();
     });
 
     function filterAndSort() {
       let filtered = [...members];
-      const searchTerm = searchInput.value.toLowerCase().trim();
-      if (searchTerm) filtered = filtered.filter(m => m.name.toLowerCase().includes(searchTerm));
+      const term = searchInput.value.toLowerCase().trim();
+      if (term) filtered = filtered.filter(m => m.name.toLowerCase().includes(term));
       
-      const sortValue = sortSelect.value;
-      if (sortValue === 'name-asc') filtered.sort((a,b) => a.name.localeCompare(b.name));
-      if (sortValue === 'name-desc') filtered.sort((a,b) => b.name.localeCompare(a.name));
-      if (sortValue === 'kpd-desc') filtered.sort((a,b) => b.kpd - a.kpd);
-      if (sortValue === 'kpd-asc') filtered.sort((a,b) => a.kpd - b.kpd);
+      const sort = sortSelect.value;
+      if (sort === 'name-asc') filtered.sort((a,b) => a.name.localeCompare(b.name));
+      if (sort === 'name-desc') filtered.sort((a,b) => b.name.localeCompare(a.name));
+      if (sort === 'kpd-desc') filtered.sort((a,b) => b.kpd - a.kpd);
+      if (sort === 'kpd-asc') filtered.sort((a,b) => a.kpd - b.kpd);
       
       renderMembers(filtered);
     }
@@ -765,21 +925,113 @@
     searchInput.addEventListener('input', filterAndSort);
     sortSelect.addEventListener('change', filterAndSort);
 
-    // Первый рендер
     renderMembers(members);
 
+    // ==================== ПРЕМИУМ СРАВНЕНИЕ ====================
+    function openCompareModal() {
+      const modal = document.getElementById('compareModal');
+      const select1 = document.getElementById('player1Select');
+      const select2 = document.getElementById('player2Select');
+      const result = document.getElementById('compareResult');
+
+      select1.innerHTML = '';
+      select2.innerHTML = '';
+      result.style.display = 'none';
+
+      members.forEach((player, index) => {
+        const option1 = new Option(player.name, index);
+        const option2 = new Option(player.name, index);
+        select1.add(option1);
+        select2.add(option2);
+      });
+
+      modal.style.display = 'flex';
+    }
+
+    function closeCompareModal() {
+      document.getElementById('compareModal').style.display = 'none';
+    }
+
+    function comparePlayers() {
+      const select1 = document.getElementById('player1Select');
+      const select2 = document.getElementById('player2Select');
+      const resultDiv = document.getElementById('compareResult');
+      const container = document.getElementById('compareContainer');
+
+      const player1 = members[select1.value];
+      const player2 = members[select2.value];
+
+      if (!player1 || !player2 || player1.name === player2.name) {
+        alert("Выберите двух разных игроков!");
+        return;
+      }
+
+      const isWinner1 = player1.kpd > player2.kpd;
+
+      container.innerHTML = `
+        <div class="compare-player-card glass ${isWinner1 ? 'winner' : ''}">
+          <div class="compare-player-name">${player1.name}</div>
+          <div class="compare-kpd" style="color: ${getKpdColor(player1.kpd)}">${player1.kpd}</div>
+          <div class="compare-label">КПД</div>
+          <div class="compare-role">${player1.role}</div>
+        </div>
+
+        <div class="compare-player-card glass ${!isWinner1 ? 'winner' : ''}">
+          <div class="compare-player-name">${player2.name}</div>
+          <div class="compare-kpd" style="color: ${getKpdColor(player2.kpd)}">${player2.kpd}</div>
+          <div class="compare-label">КПД</div>
+          <div class="compare-role">${player2.role}</div>
+        </div>
+      `;
+
+      resultDiv.style.display = 'block';
+    }
+
+    function animateValue(element, start, end, duration) {
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        element.textContent = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          element.textContent = end;
+        }
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    function animateStatCounters() {
+      document.querySelectorAll('.stat-number').forEach(el => {
+        const target = parseInt(el.dataset.target);
+        if (target) {
+          animateValue(el, 0, target, 1200);
+        }
+      });
+    }
+
     function startCountdown() {
-      const countdownEl = document.getElementById('countdown');
-      let time = 168 * 3600;
-      setInterval(() => {
-        time--;
-        const h = Math.floor(time / 3600);
-        const m = Math.floor((time % 3600) / 60);
-        const s = time % 60;
-        countdownEl.textContent = `До сброса: ${h.toString().padStart(3,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
-      }, 1000);
+      const el = document.getElementById('countdown');
+      function update() {
+        const now = new Date();
+        const nextMonday = new Date(now);
+        nextMonday.setDate(now.getDate() + (1 + 7 - now.getDay()) % 7 || 7);
+        nextMonday.setHours(0, 0, 0, 0);
+        const diff = nextMonday - now;
+        if (diff <= 0) { el.textContent = "Сброс!"; return; }
+        const d = Math.floor(diff / 86400000);
+        const h = Math.floor((diff % 86400000) / 3600000);
+        const m = Math.floor((diff % 3600000) / 60000);
+        const s = Math.floor((diff % 60000) / 1000);
+        el.textContent = `До сброса: ${d}д ${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+      }
+      update();
+      setInterval(update, 1000);
     }
     startCountdown();
+
+    console.log('%c[KIL_6] Полный код с улучшенным дизайном сравнения загружен', 'color:#00ff88');
   </script>
 </body>
 </html>
