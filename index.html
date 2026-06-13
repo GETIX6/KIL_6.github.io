@@ -10,7 +10,7 @@
       --dark: #0a0a0a;
       --gray: #1a1a1a;
     }
-   
+  
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -105,7 +105,6 @@
       transform: translateY(-10px);
       box-shadow: 0 20px 30px rgba(0, 255, 136, 0.2);
     }
-
     /* ====================== МЕДАЛИ ====================== */
     .medals-container {
       display: flex;
@@ -134,7 +133,6 @@
     .medal.rare { border-color: #00ccff; box-shadow: 0 0 12px #00ccff; }
     .medal.mythic { border-color: #ff4444; box-shadow: 0 0 14px #ff4444; }
     .medal.legendary { border-color: #ffd700; box-shadow: 0 0 16px #ffd700; }
-
     .medal .tooltip {
       visibility: hidden;
       position: absolute;
@@ -158,7 +156,6 @@
       visibility: visible;
       opacity: 1;
     }
-
     /* Модальное окно */
     .modal {
       display: none;
@@ -196,7 +193,6 @@
       cursor: pointer;
       color: #888;
     }
-
     /* Фильтры */
     .filters {
       display: flex;
@@ -264,7 +260,6 @@
     }
     .kpd-max { font-size: 1.1rem; color: #666; }
     .kpd-label { color: #aaa; font-size: 1rem; margin-top: 8px; }
-
     .clan-progress {
       background: linear-gradient(145deg, #1a1a1a, #111);
       border: 3px solid var(--primary);
@@ -406,7 +401,6 @@
       <img src="images/season-banner.png" alt="Сезон" class="season-banner"
            onerror="this.src='https://via.placeholder.com/1000x250/111827/00ff88?text=Сезон+Рождение+Бури';">
     </div>
-
     <!-- Состав -->
     <div id="members" class="content">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
@@ -424,7 +418,6 @@
       </div>
       <div class="cards" id="membersCards"></div>
     </div>
-
     <!-- Прогрессия -->
     <div id="progress" class="content">
       <h2 style="text-align:center; margin-bottom: 0.5rem;">Клановая Прогрессия</h2>
@@ -495,7 +488,6 @@
         </div>
       </div>
     </div>
-
     <!-- Статистика -->
     <div id="stats" class="content">
       <h2 style="margin-bottom: 1.5rem; text-align:center;">Статистика клана</h2>
@@ -528,7 +520,6 @@
         <div class="building-card"><strong>Артиллерийский дивизион</strong><br><span style="color:#00ff88;">Уровень X</span></div>
       </div>
     </div>
-
     <!-- Правила -->
     <div id="rules" class="content">
       <h2 style="margin-bottom: 2rem; text-align:center;">Правила клана</h2>
@@ -547,7 +538,6 @@
       </div>
     </div>
   </div>
-
   <!-- МОДАЛЬНОЕ ОКНО -->
   <div id="playerModal" class="modal">
     <div class="modal-content">
@@ -556,7 +546,6 @@
       <div class="modal-body" id="modalBody"></div>
     </div>
   </div>
-
   <script>
     function getKpdColor(kpd) {
       if (kpd >= 10) return "#c026d3";
@@ -575,28 +564,30 @@
       });
     });
 
-    // ==================== ИГРОКИ С МЕДАЛЯМИ ====================
+    // ==================== ИГРОКИ С МЕДАЛЯМИ (ИСПРАВЛЕНО) ====================
     const members = [
-     { name: "evgecshok", kpd: 10.0, role: "Лидер", img: "images/player1.jpg", 
+      { name: "evgecshok", kpd: 10.0, role: "Лидер", img: "images/player1.jpg",
         medals: [
           {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"},
           {icon:"", name:"", desc:"", rarity:""}
         ]},
-      { name: "surprizZze", kpd: 10.0, role: "Активный игрок", img: "images/player3.jpg", 
+      { name: "surprizZze", kpd: 10.0, role: "Активный игрок", img: "images/player3.jpg",
         medals: [
           {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"},
           {icon:"", name:"", desc:"", rarity:""}
         ]},
-      { name: "flamesmurf_TW", kpd: 10.0, role: "Активный игрок", img: "images/player43.jpg", 
+      { name: "flamesmurf_TW", kpd: 10.0, role: "Активный игрок", img: "images/player43.jpg",
         medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
-      { name: "___BAD__B0Y___", kpd: 10.0, role: "Активный игрок", img: "images/player45.jpg", 
+      { name: "___BAD__B0Y___", kpd: 10.0, role: "Активный игрок", img: "images/player45.jpg",
         medals: [
           {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"},
           {icon:"", name:"", desc:"", rarity:""}
         ]},
-     { name: "HE_IIpoJIUL", kpd: 7.9, role: "Активный игрок", img: "images/player3.jpg", 
-        medals: [{icon:"", name:"Балтика", desc:"Он такой еденственный", rarity:"legendary"}] },
-        medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
+      { name: "HE_IIpoJIUL", kpd: 7.9, role: "Активный игрок", img: "images/player3.jpg",
+        medals: [
+          {icon:"", name:"Балтика", desc:"Он такой еденственный", rarity:"legendary"},
+          {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}
+        ] },
       { name: "oxana2009", kpd: 1.0, role: "Активный игрок", img: "images/player4.jpg", medals: [] },
       { name: "Byaka2311", kpd: 3.0, role: "Активный игрок", img: "images/player5.jpg", medals: [] },
       { name: "CaMyPau_PA", kpd: 2.5, role: "Активный игрок", img: "images/player6.jpg", medals: [] },
@@ -606,7 +597,7 @@
       { name: "kiruxa3473", kpd: 5.0, role: "Активный игрок", img: "images/player10.jpg", medals: [] },
       { name: "LeBwa_58_rus", kpd: 1.2, role: "Активный игрок", img: "images/player11.jpg", medals: [] },
       { name: "Liquidatop_", kpd: 1.0, role: "Активный игрок", img: "images/player12.jpg", medals: [] },
-      { name: "New_Goal", kpd: 8.5, role: "Активный игрок", img: "images/player13.jpg", medals: [] }
+      { name: "New_Goal", kpd: 8.5, role: "Активный игрок", img: "images/player13.jpg", medals: [] },
       { name: "sacha_1986", kpd: 1.0, role: "Активный игрок", img: "images/player14.jpg", medals: [] },
       { name: "SUPER_RAK", kpd: 4.6, role: "Активный игрок", img: "images/player15.jpg", medals: [] },
       { name: "TauruS_716", kpd: 1.0, role: "Активный игрок", img: "images/player16.jpg", medals: [] },
@@ -640,7 +631,6 @@
       { name: "BUGMaFia7", kpd: 2.6, role: "Активный игрок", img: "images/player44.jpg", medals: [] }
     ];
 
-
     const container = document.getElementById('membersCards');
     const searchInput = document.getElementById('searchInput');
     const sortSelect = document.getElementById('sortSelect');
@@ -652,19 +642,22 @@
         const circumference = 2 * Math.PI * 52;
         const offset = circumference - (m.kpd / max) * circumference;
         const color = getKpdColor(m.kpd);
-
+        
         let medalsHTML = '';
         if (m.medals && m.medals.length > 0) {
-          medalsHTML = `<div class="medals-container">` +
-            m.medals.map(medal => `
-              <div class="medal ${medal.rarity}">
-                ${medal.icon}
-                <div class="tooltip">
-                  <strong>${medal.name}</strong><br>
-                  ${medal.desc}
+          const validMedals = m.medals.filter(medal => medal && medal.name);
+          if (validMedals.length > 0) {
+            medalsHTML = `<div class="medals-container">` +
+              validMedals.map(medal => `
+                <div class="medal ${medal.rarity}">
+                  ${medal.icon || ''}
+                  <div class="tooltip">
+                    <strong>${medal.name}</strong><br>
+                    ${medal.desc || ''}
+                  </div>
                 </div>
-              </div>
-            `).join('') + `</div>`;
+              `).join('') + `</div>`;
+          }
         }
 
         const card = document.createElement('div');
@@ -692,24 +685,87 @@
     }
 
     function openPlayerModal(player) {
-      // Можно расширить позже
-      alert(`Открыта карточка игрока: ${player.name}`);
+      const modal = document.getElementById('playerModal');
+      const header = document.getElementById('modalHeader');
+      const body = document.getElementById('modalBody');
+
+      header.innerHTML = `
+        <h2 style="color: var(--primary); margin:0;">${player.name}</h2>
+        <p style="color:#aaa; margin:8px 0 0;">${player.role}</p>
+      `;
+
+      const max = 10;
+      const circumference = 2 * Math.PI * 52;
+      const offset = circumference - (player.kpd / max) * circumference;
+      const color = getKpdColor(player.kpd);
+
+      let medalsHTML = '';
+      if (player.medals && player.medals.length > 0) {
+        const validMedals = player.medals.filter(medal => medal && medal.name);
+        if (validMedals.length > 0) {
+          medalsHTML = `<div class="medals-container" style="margin: 20px 0; justify-content:center;">` +
+            validMedals.map(medal => `
+              <div class="medal ${medal.rarity}">
+                ${medal.icon || '🏅'}
+                <div class="tooltip">
+                  <strong>${medal.name}</strong><br>
+                  ${medal.desc || ''}
+                </div>
+              </div>
+            `).join('') + `</div>`;
+        }
+      }
+
+      body.innerHTML = `
+        <div style="text-align:center;">
+          ${medalsHTML}
+          <div class="kpd-circle" style="margin: 25px auto;">
+            <svg width="130" height="130">
+              <circle class="background" cx="65" cy="65" r="52"></circle>
+              <circle class="progress" cx="65" cy="65" r="52" stroke="${color}" 
+                      style="--final-offset: ${offset}; stroke-dashoffset: ${offset};"></circle>
+            </svg>
+            <div class="kpd-text">${player.kpd}<span class="kpd-max">/10</span></div>
+          </div>
+          <div class="kpd-label">Коэффициент Полезности</div>
+          <p style="margin-top:25px; color:#888; font-size:0.95rem;">
+            Подробная статистика игрока будет добавлена позже
+          </p>
+        </div>
+      `;
+
+      modal.style.display = 'flex';
     }
+
+    function closeModal() {
+      document.getElementById('playerModal').style.display = 'none';
+    }
+
+    // Закрытие модалки по клику на фон
+    document.getElementById('playerModal').addEventListener('click', function(e) {
+      if (e.target.id === 'playerModal') {
+        closeModal();
+      }
+    });
 
     function filterAndSort() {
       let filtered = [...members];
       const searchTerm = searchInput.value.toLowerCase().trim();
       if (searchTerm) filtered = filtered.filter(m => m.name.toLowerCase().includes(searchTerm));
+      
       const sortValue = sortSelect.value;
       if (sortValue === 'name-asc') filtered.sort((a,b) => a.name.localeCompare(b.name));
       if (sortValue === 'name-desc') filtered.sort((a,b) => b.name.localeCompare(a.name));
       if (sortValue === 'kpd-desc') filtered.sort((a,b) => b.kpd - a.kpd);
       if (sortValue === 'kpd-asc') filtered.sort((a,b) => a.kpd - b.kpd);
+      
       renderMembers(filtered);
     }
 
     searchInput.addEventListener('input', filterAndSort);
     sortSelect.addEventListener('change', filterAndSort);
+
+    // Первый рендер
     renderMembers(members);
 
     function startCountdown() {
