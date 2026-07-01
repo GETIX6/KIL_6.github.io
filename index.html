@@ -764,6 +764,108 @@
     .smooth-transition {
       transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
     }
+
+    /* ======================== СТИЛИ ДЛЯ "СОБРАТЬ ТАНК" ======================== */
+    .tank-builder {
+      max-width: 1450px;
+      margin: 0 auto;
+    }
+
+    .tank-filters {
+      background: #111114;
+      padding: 24px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+      border: 2px solid #333;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .tank-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #0f0f14;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+
+    .tank-table th {
+      background: #1a1a20;
+      padding: 16px 12px;
+      text-align: left;
+      color: #ff2e2e;
+      font-weight: 700;
+      border-bottom: 3px solid #ff2e2e;
+    }
+
+    .tank-table td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #25252b;
+    }
+
+    .tank-table tr:hover {
+      background: #1a1a20;
+    }
+
+    .tank-name {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .equipment-slots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .slot {
+      background: #111114;
+      border: 3px solid #333;
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .slot:hover {
+      border-color: #ff2e2e;
+      box-shadow: 0 0 20px rgba(255,46,46,0.3);
+    }
+
+    .slot-label {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .slot-content {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #1a1a20;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    .build-button {
+      background: linear-gradient(90deg, #ff2e2e, #b71c1c);
+      color: white;
+      border: none;
+      padding: 18px 40px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      border-radius: 14px;
+      cursor: pointer;
+      margin-top: 30px;
+      box-shadow: 0 10px 30px rgba(255,46,46,0.4);
+    }
   </style>
 </head>
 <body>
@@ -784,6 +886,7 @@
   <button class="tab" data-tab="stats">СТАТИСТИКА</button>
   <button class="tab" data-tab="matchmaking">МАТЧМЕЙКИНГ</button>
   <button class="tab" data-tab="rules">ПРАВИЛА</button>
+  <button class="tab" data-tab="tankbuilder">СОБРАТЬ ТАНК</button>
 </nav>
   </header>
 
@@ -918,6 +1021,106 @@
       </div>
     </div>
 
+    <!-- СОБРАТЬ ТАНК -->
+    <div id="tankbuilder" class="content">
+      <div class="glass" style="padding: 4rem 2rem; text-align: center; max-width: 900px; margin: 4rem auto; border-radius: 24px;">
+        <h2 style="font-size: 2.8rem; margin-bottom: 2rem; color: var(--primary);">СОБРАТЬ ТАНК</h2>
+        
+        <div style="font-size: 1.8rem; color: #aaa; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+          Данный раздел в разработке!<br><br>
+          <span style="font-size: 1.3rem; color: #666;">Скоро здесь будет полноценный Tank Builder.</span>
+        </div>
+        
+        <div style="margin-top: 3rem; color: #555; font-size: 1.1rem;">
+          Пока можно использовать другие вкладки
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== ДЕТАЛЬНАЯ СТРАНИЦА СБОРКИ ======================== -->
+    <div id="tankDetailPage" class="content" style="display:none; max-width: 1400px; margin: 0 auto;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <button onclick="closeTankDetail()" 
+                style="background:#333; color:white; border:none; padding:12px 24px; border-radius:10px; cursor:pointer; font-weight:700;">
+          ← Назад к списку
+        </button>
+        <h2 id="detailTankName" style="color:#ff2e2e; margin:0; font-size:2.4rem;"></h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 30px;">
+        <div>
+          <h3 style="color:#ff2e2e; margin-bottom:15px;">МОДУЛИ</h3>
+          
+          <div style="background:#111114; padding:20px; border-radius:16px; margin-bottom:20px;">
+            <div style="margin-bottom:15px;">
+              <div style="color:#888; font-size:0.95rem; margin-bottom:6px;">ОРУДИЕ</div>
+              <select id="detailGun" style="width:100%; padding:12px; background:#1a1a20; border:2px solid #444; color:white; border-radius:10px;">
+                <option value="">Выберите орудие</option>
+                <option value="122mm D-25T">122mm D-25T</option>
+                <option value="130mm S-70">130mm S-70</option>
+                <option value="152mm M-10">152mm M-10</option>
+              </select>
+            </div>
+            
+            <div style="margin-bottom:15px;">
+              <div style="color:#888; font-size:0.95rem; margin-bottom:6px;">ДВИГАТЕЛЬ</div>
+              <select id="detailEngine" style="width:100%; padding:12px; background:#1a1a20; border:2px solid #444; color:white; border-radius:10px;">
+                <option value="">Выберите двигатель</option>
+                <option value="V-2-10">V-2-10</option>
+                <option value="Continental AV-1790">Continental AV-1790</option>
+              </select>
+            </div>
+            
+            <div style="margin-bottom:15px;">
+              <div style="color:#888; font-size:0.95rem; margin-bottom:6px;">ХОДОВАЯ</div>
+              <select id="detailTracks" style="width:100%; padding:12px; background:#1a1a20; border:2px solid #444; color:white; border-radius:10px;">
+                <option value="">Выберите ходовую</option>
+                <option value="T-10M">T-10M</option>
+                <option value="E 50M">E 50M</option>
+              </select>
+            </div>
+            
+            <div style="margin-bottom:15px;">
+              <div style="color:#888; font-size:0.95rem; margin-bottom:6px;">БАШНЯ</div>
+              <select id="detailTurret" style="width:100%; padding:12px; background:#1a1a20; border:2px solid #444; color:white; border-radius:10px;">
+                <option value="">Выберите башню</option>
+                <option value="T-10M Turret">T-10M Turret</option>
+                <option value="Object 279 Turret">Object 279 Turret</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="color:#ff2e2e; margin-bottom:15px;">ХАРАКТЕРИСТИКИ</h3>
+          
+          <div style="background:#111114; padding:20px; border-radius:16px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+              <span>Средний урон</span>
+              <strong id="statDmg">—</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+              <span>Скорость</span>
+              <strong id="statSpeed">—</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+              <span>Обзор</span>
+              <strong id="statView">—</strong>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span>Прочность</span>
+              <strong id="statHp">—</strong>
+            </div>
+          </div>
+
+          <button onclick="saveDetailedBuild()" 
+                  style="width:100%; margin-top:25px; padding:18px; background:linear-gradient(90deg, #ff2e2e, #b71c1c); color:white; border:none; border-radius:14px; font-weight:800; font-size:1.2rem; cursor:pointer;">
+            СОХРАНИТЬ СБОРКУ В КЛАН
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Статистика -->
     <div id="stats" class="content">
       <h2 style="margin-bottom:1.8rem; text-align:center; font-size:2.2rem; font-weight:800;">СТАТИСТИКА КЛАНА</h2>
@@ -934,7 +1137,7 @@
         </div>
         <div class="stat-card viii glass">
           <h3>УРОВЕНЬ VIII</h3>
-          <div class="stat-number" data-target="1209">0</div>
+          <div class="stat-number" data-target="1203">0</div>
           <div style="color:#666; margin-top:8px; font-weight:600;">танков в ангаре</div>
         </div>
         <div class="stat-card vi glass">
@@ -1033,12 +1236,25 @@
     let clanAccounts = {};
     let avatars = {};
     let currentFilteredMembers = [];
+    let currentDetailedTank = null;
+
+    let tankDatabase = [
+      { id: 1, name: "Champion", level: 11, type: "Тяжелый танк", nation: "Великобритания", dmg95: 1473, image: "champion.jpg" },
+      { id: 2, name: "ARL Projet F", level: 11, type: "Тяжелый танк", nation: "Франция", dmg95: 1444, image: "arl.jpg" },
+      { id: 3, name: "Объект 279", level: 10, type: "Тяжелый танк", nation: "СССР", dmg95: 1371, image: "279.jpg" },
+      { id: 4, name: "Eisbar", level: 10, type: "Тяжелый танк", nation: "Германия", dmg95: 1427, image: "eisbar.jpg" },
+      { id: 5, name: "Mausekönig", level: 10, type: "Тяжелый танк", nation: "Германия", dmg95: 1873, image: "maus.jpg" },
+      { id: 6, name: "MBT-B", level: 10, type: "Средний танк", nation: "США", dmg95: 1450, image: "mbt.jpg" },
+      { id: 7, name: "BZT-70", level: 10, type: "Средний танк", nation: "Китай", dmg95: 1295, image: "bzt.jpg" },
+      { id: 8, name: "Проект Васильева", level: 10, type: "Тяжелый танк", nation: "СССР", dmg95: 1176, image: "vasiliev.jpg" },
+      { id: 9, name: "Объект 278", level: 10, type: "Тяжелый танк", nation: "СССР", dmg95: 1353, image: "278.jpg" }
+    ];
 
     const members = [
-      { name: "evgecshok", kpd: 0.9, role: "Лидер", img: "images/player1.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
-      { name: "surprizZze", kpd: 1.0, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
+      { name: "evgecshok", kpd: 0.5, role: "Лидер", img: "images/player1.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
+      { name: "surprizZze", kpd: 0.6, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
       { name: "flamesmurf_TW", kpd: 0.0, role: "Активный игрок", img: "images/player43.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
-      { name: "___BAD__B0Y___", kpd: 0.9, role: "Активный игрок", img: "images/player45.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
+      { name: "___BAD__B0Y___", kpd: 0.5, role: "Активный игрок", img: "images/player45.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
       { name: "HE_IIpoJIUL", kpd: 0.0, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Балтика", desc:"Он такой единственный", rarity:"legendary"}, {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
       { name: "oxana2009", kpd: 0.0, role: "Активный игрок", img: "images/player4.jpg", medals: [] },
       { name: "Byaka2311", kpd: 0.0, role: "Активный игрок", img: "images/player5.jpg", medals: [] },
@@ -1083,8 +1299,9 @@
       { name: "6aJJaMyT_", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "_СуРок_", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "esha345", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
+      { name: "HET_ALKOGOLIZMy", kpd: 0.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "HET_HacTPoeHu9l", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
-      { name: "npocBugg", kpd: 0.9, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
+      { name: "npocBugg", kpd: 0.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "___OKAMI___", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "_Greshnik_034rus", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "174gogi174", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
@@ -1092,10 +1309,9 @@
       { name: "ncux_U", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "tenesis1s", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "agustanLP", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
-      { name: "HET_ALK0G0LIZMy", kpd: 0.9, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
-      { name: "ol8_kimi_8lo", kpd: 0.7, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
-      { name: "pucyHok_TaHka", kpd: 0.9, role: "Активный игрок", img: "images/player_new.jpg", medals: [] }
-      { name: "Taurus87V", kpd: 0.3, role: "Активный игрок", img: "images/player_new.jpg", medals: [] }
+      { name: "HET_ALK0G0LIZMy", kpd: 0.3, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
+      { name: "ol8_kimi_8lo", kpd: 0.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
+      { name: "pucyHok_TaHka", kpd: 0.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] }
     ];
 
     function getAvatar(name) {
@@ -1290,6 +1506,9 @@
             if (targetTab === 'matchmaking') {
               initMatchmaking();
             }
+            if (targetTab === 'tankbuilder') {
+              initTankBuilder();
+            }
           }, 1850);
         });
       });
@@ -1303,12 +1522,201 @@
       if (sort) sort.addEventListener('change', filterAndSort);
     }
 
+    function initTankBuilder() {
+      const tbody = document.getElementById('tankList');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      tankDatabase.forEach(tank => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td class="tank-name">${tank.name}</td>
+          <td>${tank.level}</td>
+          <td>${tank.type}</td>
+          <td>${tank.nation}</td>
+          <td>${tank.dmg95}</td>
+          <td>
+            <button onclick="selectTank(${tank.id})"
+                    style="background:#ff2e2e; color:white; border:none; padding:8px 18px; border-radius:8px; cursor:pointer; font-weight:700;">
+              Выбрать
+            </button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function selectTank(tankId) {
+      const tank = tankDatabase.find(t => t.id === tankId);
+      if (!tank) return;
+
+      const selectedTankName = document.getElementById('selectedTankName');
+      const buildSection = document.getElementById('buildSection');
+      if (selectedTankName) selectedTankName.textContent = tank.name;
+      if (buildSection) buildSection.style.display = 'block';
+
+      const slotElements = {
+        gun: document.getElementById('slot-gun'),
+        engine: document.getElementById('slot-engine'),
+        tracks: document.getElementById('slot-tracks'),
+        turret: document.getElementById('slot-turret'),
+        radio: document.getElementById('slot-radio'),
+        consumables: document.getElementById('slot-consumables')
+      };
+
+      if (slotElements.gun) slotElements.gun.innerHTML = 'Выберите орудие';
+      if (slotElements.engine) slotElements.engine.innerHTML = 'Выберите двигатель';
+      if (slotElements.tracks) slotElements.tracks.innerHTML = 'Выберите ходовую';
+      if (slotElements.turret) slotElements.turret.innerHTML = 'Выберите башню';
+      if (slotElements.radio) slotElements.radio.innerHTML = 'Выберите радио';
+      if (slotElements.consumables) slotElements.consumables.innerHTML = 'Выберите снаряжение';
+
+      showToast(`Выбран танк: ${tank.name}`, 'success');
+      openTankDetail(tank.id);
+    }
+
+    function openTankDetail(tankId) {
+      const tank = tankDatabase.find(t => t.id === tankId);
+      if (!tank) return;
+
+      const detailPage = document.getElementById('tankDetailPage');
+      const detailTankName = document.getElementById('detailTankName');
+      if (detailPage) detailPage.style.display = 'block';
+      if (detailTankName) detailTankName.textContent = tank.name;
+
+      document.getElementById('statDmg').textContent = `${tank.dmg95} урона`;
+      document.getElementById('statSpeed').textContent = '55 км/ч';
+      document.getElementById('statView').textContent = '420 м';
+      document.getElementById('statHp').textContent = '1800 HP';
+
+      document.getElementById('detailGun').value = '';
+      document.getElementById('detailEngine').value = '';
+      document.getElementById('detailTracks').value = '';
+      document.getElementById('detailTurret').value = '';
+
+      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+      detailPage.classList.add('active');
+    }
+
+    function closeTankDetail() {
+      const detailPage = document.getElementById('tankDetailPage');
+      if (detailPage) detailPage.style.display = 'none';
+      document.getElementById('tankbuilder').classList.add('active');
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelector('[data-tab="tankbuilder"]').classList.add('active');
+    }
+
+    function saveBuild() {
+      const tankName = document.getElementById('selectedTankName').textContent;
+      if (!tankName || tankName === '—') {
+        showToast('Сначала выберите танк', 'error');
+        return;
+      }
+      showToast(`Сборка для ${tankName} сохранена!`, 'success');
+    }
+
+    function saveDetailedBuild() {
+      const tankName = document.getElementById('detailTankName').textContent;
+      if (!tankName) {
+        showToast('Сначала выберите танк', 'error');
+        return;
+      }
+
+      const gun = document.getElementById('detailGun').value || 'Не выбрано';
+      const engine = document.getElementById('detailEngine').value || 'Не выбрано';
+      const tracks = document.getElementById('detailTracks').value || 'Не выбрано';
+      const turret = document.getElementById('detailTurret').value || 'Не выбрано';
+
+      showToast(`Сборка ${tankName} сохранена: ${gun}, ${engine}, ${tracks}, ${turret}`, 'success');
+    }
+
+    // ======================== ДЕТАЛЬНАЯ СТРАНИЦА СБОРКИ (ЧАСТЬ 6) ========================
+    function selectTank(tankId) {
+      const tank = tankDatabase.find(t => t.id === tankId);
+      if (!tank) return;
+
+      currentDetailedTank = tank;
+
+      document.getElementById('tankbuilder').style.display = 'none';
+      document.getElementById('tankDetailPage').style.display = 'block';
+
+      document.getElementById('detailTankName').textContent = tank.name;
+
+      document.getElementById('detailGun').value = '';
+      document.getElementById('detailEngine').value = '';
+      document.getElementById('detailTracks').value = '';
+      document.getElementById('detailTurret').value = '';
+
+      const selects = ['detailGun', 'detailEngine', 'detailTracks', 'detailTurret'];
+      selects.forEach(id => {
+        document.getElementById(id).onchange = updateDetailedStats;
+      });
+
+      updateDetailedStats();
+    }
+
+    function updateDetailedStats() {
+      if (!currentDetailedTank) return;
+
+      let dmg = currentDetailedTank.dmg95 || 1300;
+      let speed = 35;
+      let view = 380;
+      let hp = 2200;
+
+      const gun = document.getElementById('detailGun').value;
+      const engine = document.getElementById('detailEngine').value;
+      const tracks = document.getElementById('detailTracks').value;
+      const turret = document.getElementById('detailTurret').value;
+
+      if (gun) dmg += 180;
+      if (engine) speed += 8;
+      if (turret) view += 30;
+      if (tracks) hp += 180;
+
+      document.getElementById('statDmg').textContent = dmg;
+      document.getElementById('statSpeed').textContent = speed + ' км/ч';
+      document.getElementById('statView').textContent = view + ' м';
+      document.getElementById('statHp').textContent = hp;
+    }
+
+    function saveDetailedBuild() {
+      if (!currentDetailedTank) return;
+
+      const build = {
+        tank: currentDetailedTank.name,
+        gun: document.getElementById('detailGun').value || 'Стандартное',
+        engine: document.getElementById('detailEngine').value || 'Стандартный',
+        tracks: document.getElementById('detailTracks').value || 'Стандартная',
+        turret: document.getElementById('detailTurret').value || 'Стандартная'
+      };
+
+      showToast(`Сборка для ${build.tank} успешно сохранена!`, 'success');
+      console.log('Сохранённая сборка:', build);
+    }
+
+    function closeTankDetail() {
+      document.getElementById('tankDetailPage').style.display = 'none';
+      document.getElementById('tankbuilder').style.display = 'block';
+      currentDetailedTank = null;
+    }
+
+    function initTankBuilderOnLoad() {
+      const tankTab = document.querySelector('[data-tab="tankbuilder"]');
+      if (tankTab) {
+        tankTab.addEventListener('click', () => {
+          setTimeout(initTankBuilder, 300);
+        });
+      }
+    }
+
     function initEverything() {
       initTabs();
       initFilters();
       initParticles();
+      initTankBuilderOnLoad();
 
       renderMembers(members);
+      initTankBuilder();
 
       startCountdown();
       
