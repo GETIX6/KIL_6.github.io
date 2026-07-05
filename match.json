@@ -1,0 +1,21 @@
+{
+  "enemyClan": "[RNDM] RANDOM CLAN",
+  "map": "Рудники",
+  "scoreLeft": 7,
+  "scoreRight": 4,
+  "teamLeft": [
+    "evgecshok",
+    "surprizZze",
+    "flamesmurf_TW",
+    "___BAD__B0Y___",
+    "TauruS_716"
+  ],
+  "teamRight": [
+    "EnemyPlayer1",
+    "EnemyPlayer2",
+    "EnemyPlayer3",
+    "EnemyPlayer4"
+  ],
+  "status": "ИДЁТ БОЙ",
+  "updated": "2026-07-05T11:20:00"
+}
