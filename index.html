@@ -1005,62 +1005,74 @@
       </div>
     </div>
 
-  <!-- ==================== МАТЧМЕЙКИНГ (ВНУТРИ INDEX) ==================== -->
+<!-- ==================== МАТЧМЕЙКИНГ (КРУТОЙ ВАРИАНТ) ==================== -->
 <div id="matchmaking" class="content">
-  <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
-    
-    <div style="text-align: center; margin-bottom: 2.5rem;">
-      <div style="display: inline-flex; align-items: center; gap: 15px; background: rgba(255,46,46,0.08); padding: 12px 40px; border-radius: 50px; border: 2px solid var(--primary);">
-        <div style="width: 14px; height: 14px; background: #ff2e2e; border-radius: 50%; box-shadow: 0 0 20px #ff2e2e; animation: pulse 2s infinite;"></div>
-        <h2 style="margin: 0; font-size: 3.2rem; font-weight: 900; color: var(--primary); letter-spacing: 2px;">LIVE МАТЧМЕЙКИНГ</h2>
+  <div style="max-width: 1400px; margin: 0 auto; padding: 20px;">
+
+    <!-- Заголовок -->
+    <div style="text-align: center; margin-bottom: 25px;">
+      <div style="display: inline-flex; align-items: center; gap: 12px; background: rgba(255,46,46,0.1); padding: 10px 35px; border-radius: 50px; border: 2px solid #ff2e2e;">
+        <div style="width: 12px; height: 12px; background: #ff2e2e; border-radius: 50%; box-shadow: 0 0 15px #ff2e2e; animation: pulse 2s infinite;"></div>
+        <h2 style="margin: 0; font-size: 2.8rem; color: #ff2e2e; font-weight: 900;">LIVE МАТЧМЕЙКИНГ</h2>
       </div>
     </div>
 
-    <div id="liveMatchContainer" style="background: var(--glass-bg); border: 3px solid var(--primary); border-radius: 28px; padding: 40px; box-shadow: 0 25px 70px rgba(0,0,0,0.6);">
-      
-      <div id="matchContent" style="display: none;">
-        
-        <div style="text-align: center; margin-bottom: 35px;">
-          <div style="font-size: 1.1rem; color: #888; margin-bottom: 8px; letter-spacing: 3px;">ТЕКУЩАЯ КАРТА</div>
-          <div id="match-map-name" style="font-size: 3.4rem; font-weight: 900; color: #ffd700; text-shadow: 0 0 30px rgba(255,215,0,0.4);"></div>
-        </div>
+    <div style="background: #111114; border: 3px solid #ff2e2e; border-radius: 28px; padding: 45px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
 
-        <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: start;">
+      <!-- КАРТА -->
+      <div style="text-align: center; margin-bottom: 35px;">
+        <div style="color: #888; font-size: 1rem; letter-spacing: 2px;">ТЕКУЩАЯ КАРТА</div>
+        <!-- ИЗМЕНИ КАРТУ ЗДЕСЬ -->
+        <div style="font-size: 3.2rem; font-weight: 900; color: #ffd700; margin-top: 5px;">Рудники</div>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;">
+
+        <!-- НАША КОМАНДА -->
+        <div style="background: rgba(255,46,46,0.06); border: 3px solid #ff2e2e; border-radius: 20px; padding: 30px; min-width: 320px; text-align: center;">
+          <div style="color: #ff2e2e; font-size: 1.5rem; font-weight: 800; margin-bottom: 15px;">[KIL_6] THE SHIELD</div>
           
-          <!-- НАША КОМАНДА -->
-          <div style="background: rgba(255,46,46,0.06); border: 3px solid var(--primary); border-radius: 22px; padding: 30px; text-align: center;">
-            <div style="font-size: 1.6rem; font-weight: 800; color: var(--primary); margin-bottom: 15px;">[KIL_6] THE SHIELD</div>
-            <div id="score-left" style="font-size: 7.5rem; font-weight: 900; line-height: 1; color: var(--primary); text-shadow: 0 0 40px rgba(255,46,46,0.6);"></div>
-            <div style="margin: 25px 0 15px; font-size: 1.1rem; color: #777; font-weight: 600;">СОСТАВ КОМАНДЫ</div>
-            <div id="team-left-list" style="display: flex; flex-direction: column; gap: 8px;"></div>
-          </div>
+          <!-- НАШ СЧЁТ -->
+          <div style="font-size: 6.5rem; font-weight: 900; color: #ff2e2e; line-height: 1;">9</div>
 
-          <div style="display: flex; align-items: center; justify-content: center; padding-top: 80px;">
-            <div style="font-size: 5.5rem; font-weight: 900; color: #444; letter-spacing: 8px;">VS</div>
-          </div>
+          <div style="margin: 25px 0 15px; color: #777; font-weight: 600;">СОСТАВ КОМАНДЫ</div>
 
-          <!-- ПРОТИВНИК -->
-          <div style="background: rgba(0,204,255,0.06); border: 3px solid #00ccff; border-radius: 22px; padding: 30px; text-align: center;">
-            <div id="enemy-clan-name" style="font-size: 1.6rem; font-weight: 800; color: #00ccff; margin-bottom: 15px;"></div>
-            <div id="score-right" style="font-size: 7.5rem; font-weight: 900; line-height: 1; color: #00ccff; text-shadow: 0 0 40px rgba(0,204,255,0.5);"></div>
-            <div style="margin: 25px 0 15px; font-size: 1.1rem; color: #777; font-weight: 600;">СОСТАВ ПРОТИВНИКА</div>
-            <div id="team-right-list" style="display: flex; flex-direction: column; gap: 8px;"></div>
+          <!-- ИГРОКИ НАШЕЙ КОМАНДЫ (добавляй/удаляй строки) -->
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#ff2e2e; font-size:1.1rem;">evgecshok</div>
+            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#ff2e2e; font-size:1.1rem;">surprizZze</div>
+            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#ff2e2e; font-size:1.1rem;">flamesmurf_TW</div>
+            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#ff2e2e; font-size:1.1rem;">___BAD__B0Y___</div>
           </div>
-
         </div>
 
-        <div style="text-align: center; margin-top: 40px; padding-top: 25px; border-top: 2px solid #333;">
-          <div id="match-status" style="font-size: 1.6rem; font-weight: 700; color: #ff5252; margin-bottom: 10px;"></div>
-          <div style="color: #666; font-size: 1rem;">
-            Последнее обновление: <span id="last-updated"></span>
+        <!-- VS -->
+        <div style="display: flex; align-items: center; justify-content: center; font-size: 4.5rem; color: #444; font-weight: 900; padding-top: 60px;">VS</div>
+
+        <!-- ВРАЖЕСКАЯ КОМАНДА -->
+        <div style="background: rgba(0,204,255,0.06); border: 3px solid #00ccff; border-radius: 20px; padding: 30px; min-width: 320px; text-align: center;">
+          <!-- ИЗМЕНИ НАЗВАНИЕ ВРАЖЕСКОГО КЛАНА -->
+          <div style="color: #00ccff; font-size: 1.5rem; font-weight: 800; margin-bottom: 15px;">[RNDM] RANDOM</div>
+          
+          <!-- СЧЁТ ПРОТИВНИКА -->
+          <div style="font-size: 6.5rem; font-weight: 900; color: #00ccff; line-height: 1;">4</div>
+
+          <div style="margin: 25px 0 15px; color: #777; font-weight: 600;">СОСТАВ ПРОТИВНИКА</div>
+
+          <!-- ИГРОКИ ПРОТИВНИКА (добавляй/удаляй строки) -->
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#00ccff; font-size:1.1rem;">Enemy1</div>
+            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#00ccff; font-size:1.1rem;">Enemy2</div>
+            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#00ccff; font-size:1.1rem;">Enemy3</div>
           </div>
         </div>
 
       </div>
 
-      <div id="noMatchMessage" style="text-align: center; padding: 80px 40px; display: none;">
-        <h3 style="font-size: 2.8rem; color: #555; margin-bottom: 15px;">Сейчас нет активного матча</h3>
-        <p style="color: #777; font-size: 1.3rem;">Ожидаем начало вылазки...</p>
+      <!-- СТАТУС МАТЧА -->
+      <div style="text-align: center; margin-top: 40px;">
+        <!-- ИЗМЕНИ СТАТУС -->
+        <div style="font-size: 1.6rem; font-weight: 800; color: #ff5252;">ИДЁТ БОЙ</div>
       </div>
 
     </div>
