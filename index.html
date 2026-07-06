@@ -884,7 +884,7 @@
   <button class="tab" data-tab="members">СОСТАВ</button>
   <button class="tab" data-tab="progress">ПРОГРЕССИЯ</button>
   <button class="tab" data-tab="stats">СТАТИСТИКА</button>
-  <button class="tab" data-tab="matchmaking">МАТЧМЕЙКИНГ</button>
+  <button class="tab" data-tab="tournaments">ТУРНИРЫ</button>
   <button class="tab" data-tab="rules">ПРАВИЛА</button>
   <button class="tab" data-tab="tankbuilder">СОБРАТЬ ТАНК</button>
 </nav>
@@ -952,7 +952,31 @@
         </div>
       </div>
     
-      <div class="cards" id="membersCards"></div>
+      <div class="cards" id="membersCards">
+        <!-- КАРТОЧКА EVGECShOK -->
+        <div class="card glass" style="border: 3px solid #c026d3; box-shadow: 0 0 35px rgba(192, 38, 211, 0.6);">
+          <img src="https://i.imgur.com/UM6j4.png" 
+               alt="evgecshok" 
+               style="height: 195px; object-fit: cover; background: #1a1a20; border-bottom: 4px solid #c026d3;">
+
+          <div class="card-body">
+            <h3 style="color: #c026d3; font-size: 1.6rem; margin-bottom: 8px;">evgecshok</h3>
+            <p style="color:#bbb; margin-bottom: 18px;">Лидер</p>
+            
+            <!-- Круг КПД с свечением -->
+            <div class="kpd-circle" style="margin: 22px auto 15px;">
+              <svg width="138" height="138">
+                <circle class="background" cx="69" cy="69" r="54"></circle>
+                <circle class="progress" cx="69" cy="69" r="54" stroke="#c026d3" style="--final-offset: 160;"></circle>
+              </svg>
+              <div class="kpd-text" style="color:#c026d3;">9.4<span style="font-size:1rem;">/10</span></div>
+            </div>
+
+            <div style="text-align:center; color:#c026d3; font-size:1.05rem; font-weight:600;">Главный медведь клана 🐻</div>
+          </div>
+        </div>
+        <!-- КОНЕЦ КАРТОЧКИ -->
+      </div>
     </div>
 
     <!-- Прогрессия -->
@@ -1005,77 +1029,126 @@
       </div>
     </div>
 
-<!-- ==================== МАТЧМЕЙКИНГ (КРУТОЙ ВАРИАНТ) ==================== -->
-<div id="matchmaking" class="content">
-  <div style="max-width: 1400px; margin: 0 auto; padding: 20px;">
+<!-- ==================== ТУРНИРЫ (16 ЧЕЛОВЕК) ==================== -->
+<div id="tournaments" class="content">
+  <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
 
-    <!-- Заголовок -->
-    <div style="text-align: center; margin-bottom: 25px;">
-      <div style="display: inline-flex; align-items: center; gap: 12px; background: rgba(255,46,46,0.1); padding: 10px 35px; border-radius: 50px; border: 2px solid #ff2e2e;">
-        <div style="width: 12px; height: 12px; background: #ff2e2e; border-radius: 50%; box-shadow: 0 0 15px #ff2e2e; animation: pulse 2s infinite;"></div>
-        <h2 style="margin: 0; font-size: 2.8rem; color: #ff2e2e; font-weight: 900;">LIVE МАТЧМЕЙКИНГ</h2>
-      </div>
-    </div>
+    <h2 style="text-align:center; font-size:2.6rem; font-weight:900; color:#ff2e2e; margin-bottom:2.2rem;">
+      ТУРНИРНАЯ СЕТКА • KIL_6 x GETIX TURNIRS
+    </h2>
 
-    <div style="background: #111114; border: 3px solid #ff2e2e; border-radius: 28px; padding: 45px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+    <div style="background:#111114; border:3px solid #333; border-radius:20px; padding:28px 25px; overflow-x:auto;">
 
-      <!-- КАРТА -->
-      <div style="text-align: center; margin-bottom: 35px;">
-        <div style="color: #888; font-size: 1rem; letter-spacing: 2px;">ТЕКУЩАЯ КАРТА</div>
-        <!-- ИЗМЕНИ КАРТУ ЗДЕСЬ -->
-        <div style="font-size: 3.2rem; font-weight: 900; color: #ffd700; margin-top: 5px;">Рудники</div>
-      </div>
+      <div style="display:flex; gap:30px; min-width:1700px;">
 
-      <div style="display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;">
+        <!-- РАУНД ИЗ 16 -->
+        <div style="width:245px; flex-shrink:0;">
+          <div style="background:#ff2e2e; color:white; padding:9px 16px; border-radius:999px; text-align:center; margin-bottom:14px; font-weight:700; font-size:1.05rem;">
+            1/8 ФИНАЛА
+          </div>
 
-        <!-- НАША КОМАНДА -->
-        <div style="background: rgba(255,46,46,0.06); border: 3px solid #ff2e2e; border-radius: 20px; padding: 30px; min-width: 320px; text-align: center;">
-          <div style="color: #ff2e2e; font-size: 1.5rem; font-weight: 800; margin-bottom: 15px;">[KIL_6] THE SHIELD</div>
-          
-          <!-- НАШ СЧЁТ -->
-          <div style="font-size: 6.5rem; font-weight: 900; color: #ff2e2e; line-height: 1;">9</div>
-
-          <div style="margin: 25px 0 15px; color: #777; font-weight: 600;">СОСТАВ КОМАНДЫ</div>
-
-          <!-- ИГРОКИ НАШЕЙ КОМАНДЫ (добавляй/удаляй строки) -->
-          <div style="display: flex; flex-direction: column; gap: 8px;">
-            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#ff2e2e; font-size:1.1rem;">evgecshok</div>
-            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#ff2e2e; font-size:1.1rem;">surprizZze</div>
-            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#ff2e2e; font-size:1.1rem;">flamesmurf_TW</div>
-            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#ff2e2e; font-size:1.1rem;">___BAD__B0Y___</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="background:#1a1a20; border:2px solid #444; border-radius:8px; padding:9px 12px;">
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem;"><span style="color:#666;">Игрок 1</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">Игрок 2</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #444; border-radius:8px; padding:9px 12px;">
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem;"><span style="color:#666;">Игрок 3</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">Игрок 4</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #444; border-radius:8px; padding:9px 12px;">
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem;"><span style="color:#666;">Игрок 5</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">Игрок 6</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #444; border-radius:8px; padding:9px 12px;">
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem;"><span style="color:#666;">Игрок 7</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">Игрок 8</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #444; border-radius:8px; padding:9px 12px;">
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem;"><span style="color:#666;">Игрок 9</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">Игрок 10</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #444; border-radius:8px; padding:9px 12px;">
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem;"><span style="color:#666;">Игрок 11</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">Игрок 12</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #444; border-radius:8px; padding:9px 12px;">
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem;"><span style="color:#666;">Игрок 13</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">Игрок 14</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #444; border-radius:8px; padding:9px 12px;">
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem;"><span style="color:#666;">Игрок 15</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.92rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">Игрок 16</span><span>0</span></div>
+            </div>
           </div>
         </div>
 
-        <!-- VS -->
-        <div style="display: flex; align-items: center; justify-content: center; font-size: 4.5rem; color: #444; font-weight: 900; padding-top: 60px;">VS</div>
+        <!-- ЧЕТВЕРТЬФИНАЛ -->
+        <div style="width:245px; flex-shrink:0;">
+          <div style="background:#ff2e2e; color:white; padding:9px 16px; border-radius:999px; text-align:center; margin-bottom:14px; font-weight:700; font-size:1.05rem;">
+            ЧЕТВЕРТЬФИНАЛ
+          </div>
 
-        <!-- ВРАЖЕСКАЯ КОМАНДА -->
-        <div style="background: rgba(0,204,255,0.06); border: 3px solid #00ccff; border-radius: 20px; padding: 30px; min-width: 320px; text-align: center;">
-          <!-- ИЗМЕНИ НАЗВАНИЕ ВРАЖЕСКОГО КЛАНА -->
-          <div style="color: #00ccff; font-size: 1.5rem; font-weight: 800; margin-bottom: 15px;">[RNDM] RANDOM</div>
-          
-          <!-- СЧЁТ ПРОТИВНИКА -->
-          <div style="font-size: 6.5rem; font-weight: 900; color: #00ccff; line-height: 1;">4</div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="background:#1a1a20; border:2px solid #ff2e2e; border-radius:8px; padding:12px;">
+              <div style="font-size:0.84rem; color:#ffaa00; margin-bottom:6px;">Победитель 1/8 №1</div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem;"><span style="color:#666;">—</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">—</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #ff2e2e; border-radius:8px; padding:12px;">
+              <div style="font-size:0.84rem; color:#ffaa00; margin-bottom:6px;">Победитель 1/8 №2</div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem;"><span style="color:#666;">—</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">—</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #ff2e2e; border-radius:8px; padding:12px;">
+              <div style="font-size:0.84rem; color:#ffaa00; margin-bottom:6px;">Победитель 1/8 №3</div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem;"><span style="color:#666;">—</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">—</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #ff2e2e; border-radius:8px; padding:12px;">
+              <div style="font-size:0.84rem; color:#ffaa00; margin-bottom:6px;">Победитель 1/8 №4</div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem;"><span style="color:#666;">—</span><span style="color:#ff2e2e; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">—</span><span>0</span></div>
+            </div>
+          </div>
+        </div>
 
-          <div style="margin: 25px 0 15px; color: #777; font-weight: 600;">СОСТАВ ПРОТИВНИКА</div>
+        <!-- ПОЛУФИНАЛ -->
+        <div style="width:245px; flex-shrink:0;">
+          <div style="background:#ff2e2e; color:white; padding:9px 16px; border-radius:999px; text-align:center; margin-bottom:14px; font-weight:700; font-size:1.05rem;">
+            ПОЛУФИНАЛ
+          </div>
 
-          <!-- ИГРОКИ ПРОТИВНИКА (добавляй/удаляй строки) -->
-          <div style="display: flex; flex-direction: column; gap: 8px;">
-            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#00ccff; font-size:1.1rem;">Enemy1</div>
-            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#00ccff; font-size:1.1rem;">Enemy2</div>
-            <div style="background:#1a1a20; padding:13px 20px; border-radius:12px; color:#00ccff; font-size:1.1rem;">Enemy3</div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="background:#1a1a20; border:2px solid #ffd700; border-radius:8px; padding:12px;">
+              <div style="font-size:0.84rem; color:#ffaa00; margin-bottom:6px;">Победитель Четвертьфинала 1</div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem;"><span style="color:#666;">—</span><span style="color:#ffd700; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">—</span><span>0</span></div>
+            </div>
+            <div style="background:#1a1a20; border:2px solid #ffd700; border-radius:8px; padding:12px;">
+              <div style="font-size:0.84rem; color:#ffaa00; margin-bottom:6px;">Победитель Четвертьфинала 2</div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem;"><span style="color:#666;">—</span><span style="color:#ffd700; font-weight:700;">0</span></div>
+              <div style="display:flex; justify-content:space-between; font-size:0.95rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">—</span><span>0</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ФИНАЛ -->
+        <div style="width:245px; flex-shrink:0;">
+          <div style="background:#ffd700; color:#1a1a20; padding:9px 16px; border-radius:999px; text-align:center; margin-bottom:14px; font-weight:700; font-size:1.05rem;">
+            ФИНАЛ
+          </div>
+
+          <div style="background: linear-gradient(#2a2a32, #1f1f24); border:3px solid #ffd700; border-radius:10px; padding:14px 16px;">
+            <div style="font-size:0.85rem; color:#ffaa00; margin-bottom:5px;">Победитель Полуфинала 1 vs Победитель Полуфинала 2</div>
+            <div style="display:flex; justify-content:space-between; font-size:0.95rem;"><span style="color:#666;">—</span><span style="color:#ffd700; font-weight:700;">0</span></div>
+            <div style="display:flex; justify-content:space-between; font-size:0.95rem; margin-top:2px; opacity:0.6;"><span style="color:#666;">—</span><span>0</span></div>
           </div>
         </div>
 
       </div>
-
-      <!-- СТАТУС МАТЧА -->
-      <div style="text-align: center; margin-top: 40px;">
-        <!-- ИЗМЕНИ СТАТУС -->
-        <div style="font-size: 1.6rem; font-weight: 800; color: #ff5252;">ИДЁТ БОЙ</div>
-      </div>
-
     </div>
+
   </div>
 </div>
     <!-- ======================== ДЕТАЛЬНАЯ СТРАНИЦА СБОРКИ ======================== -->
@@ -1178,7 +1251,7 @@
         </div>
         <div class="stat-card viii glass">
           <h3>УРОВЕНЬ VIII</h3>
-          <div class="stat-number" data-target="1276">0</div>
+          <div class="stat-number" data-target="1203">0</div>
           <div style="color:#666; margin-top:8px; font-weight:600;">танков в ангаре</div>
         </div>
         <div class="stat-card vi glass">
@@ -1292,15 +1365,15 @@
     ];
 
     const members = [
-     { name: "evgecshok", kpd: 6.6, role: "Лидер", img: "images/player1.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
-      { name: "surprizZze", kpd: 6.6, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}, {icon:"", name:"Серебряный мяч", desc:"Выдана за выход команды в плей-офф 1/4", rarity:"legendary"}] },
+     { name: "evgecshok", kpd: 5.6, role: "Лидер", img: "images/player1.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
+      { name: "surprizZze", kpd: 5.5, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}, {icon:"", name:"Серебряный мяч", desc:"Выдана за выход команды в плей-офф 1/4", rarity:"legendary"}] },
       { name: "flamesmurf_TW", kpd: 0.6, role: "Активный игрок", img: "images/player43.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
       { name: "___BAD__B0Y___", kpd: 4.0, role: "Активный игрок", img: "images/player45.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
       { name: "HE_IIpoJIUL", kpd: 0.0, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Балтика", desc:"Он такой единственный", rarity:"legendary"}, {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
       { name: "oxana2009", kpd: 0.0, role: "Активный игрок", img: "images/player4.jpg", medals: [] },
       { name: "Byaka2311", kpd: 0.7, role: "Активный игрок", img: "images/player5.jpg", medals: [] },
       { name: "CaMyPau_PA", kpd: 0.0, role: "Активный игрок", img: "images/player6.jpg", medals: [] },
-      { name: "egorka_544mcotg", kpd: 5.2, role: "Активный игрок", img: "images/player7.jpg", medals: [] },
+      { name: "egorka_544mcotg", kpd: 5.0, role: "Активный игрок", img: "images/player7.jpg", medals: [] },
       { name: "FruKTIc_", kpd: 0.0, role: "Активный игрок", img: "images/player8.jpg", medals: [] },
       { name: "KOrbenDallass", kpd: 0.0, role: "Активный игрок", img: "images/player9.jpg", medals: [] },
       { name: "kiruxa3473", kpd: 0.3, role: "Активный игрок", img: "images/player10.jpg", medals: [] },
@@ -1308,7 +1381,7 @@
       { name: "Liquidatop_", kpd: 0.0, role: "Активный игрок", img: "images/player12.jpg", medals: [] },
       { name: "New_Goal", kpd: 0.0, role: "Активный игрок", img: "images/player13.jpg", medals: [] },
       { name: "sacha_1986", kpd: 0.0, role: "Активный игрок", img: "images/player14.jpg", medals: [] },
-      { name: "SUPER_RAK", kpd: 0.8, role: "Активный игрок", img: "images/player15.jpg", medals: [] },
+      { name: "SUPER_RAK", kpd: 0.0, role: "Активный игрок", img: "images/player15.jpg", medals: [] },
       { name: "TSUNXM1", kpd: 0.0, role: "Активный игрок", img: "images/player17.jpg", medals: [] },
       { name: "Vitek_7777", kpd: 1.2, role: "Активный игрок", img: "images/player18.jpg", medals: [] },
       { name: "Wolfsburg__I_LI", kpd: 0.0, role: "Активный игрок", img: "images/player19.jpg", medals: [] },
@@ -1334,12 +1407,12 @@
       { name: "mat2777", kpd: 0.0, role: "Активный игрок", img: "images/player39.jpg", medals: [] },
       { name: "NikerTp", kpd: 0.0, role: "Активный игрок", img: "images/player40.jpg", medals: [] },
       { name: "Zarecevagor", kpd: 0.0, role: "Активный игрок", img: "images/player41.jpg", medals: [] },
-      { name: "BUGMaFia7", kpd: 6.0, role: "Активный игрок", img: "images/player44.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
+      { name: "BUGMaFia7", kpd: 5.0, role: "Активный игрок", img: "images/player44.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
 
       { name: "6aJJaMyT_", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "_СуРок_", kpd: 2.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
-      { name: "esha345", kpd: 0.3, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
-      { name: "HET_ALKOGOLIZMy", kpd: 1.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
+      { name: "esha345", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
+      { name: "HET_ALKOGOLIZMy", kpd: 0.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "HET_HacTPoeHu9l", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "npocBugg", kpd: 0.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "___OKAMI___", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
@@ -1349,9 +1422,9 @@
       { name: "ncux_U", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "tenesis1s", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "agustanLP", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
-      { name: "HET_ALK0G0LIZMy", kpd: 0.6, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
+      { name: "HET_ALK0G0LIZMy", kpd: 0.3, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "ol8_kimi_8lo", kpd: 0.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
-      { name: "pucyHok_TaHka", kpd: 1.6, role: "Активный игрок", img: "images/player_new.jpg", medals: [] }
+      { name: "pucyHok_TaHka", kpd: 1.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] }
     ];
 
     function getAvatar(name) {
@@ -1543,8 +1616,8 @@
             if (targetTab === 'members') {
               filterAndSort();
             }
-            if (targetTab === 'matchmaking') {
-              initMatchmaking();
+            if (targetTab === 'tournaments') {
+              initTournaments();
             }
             if (targetTab === 'tankbuilder') {
               initTankBuilder();
@@ -1760,9 +1833,9 @@
 
       startCountdown();
       
-      // Инициализация матчмейкинга
-      if (document.getElementById('matchmaking')) {
-        initMatchmaking();
+      // Инициализация турниров
+      if (document.getElementById('tournaments')) {
+        initTournaments();
       }
 
       console.log('[KIL_6] Ready');
@@ -2001,9 +2074,8 @@ function renderBeautifulMatch() {
   ).join('');
 }
 
-function initMatchmaking() {
-  loadMatchData();
-  setInterval(loadMatchData, 30000);
+function initTournaments() {
+  console.log('[KIL_6] tournaments tab opened');
 }
     // Запуск всего
     document.addEventListener('DOMContentLoaded', function() {
