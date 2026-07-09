@@ -897,33 +897,88 @@
         <span style="color:var(--primary)">[KIL_6] THE SHIELD</span><br>
         <span style="font-size: 2.1rem; color:#ccc; font-weight:600;">2.0</span>
       </h1>
-      
-      <p class="clan-motto"></p>
 
-      <img src="images/natisk-special.png"
-           alt="Натиск Специальный Выпуск"
-           class="season-banner"
-           style="max-height: 460px; object-fit: cover;"
-           onerror="this.src='https://via.placeholder.com/1180x460/0a0a0c/ff2e2e?text=НАТИСК+СПЕЦИАЛЬНЫЙ+ВЫПУСК';">
-      
-      <div style="text-align:center; margin: 1.6rem 0 2.6rem; color:#999; font-size:1.2rem; max-width: 820px; margin-left:auto; margin-right:auto;">
-        <strong style="color:#ff2e2e; font-size:1.35rem;"></strong><br>
-        <span style="opacity:0.85;"></span>
+      <!-- ==================== ГРАНДИОЗНЫЙ БАННЕР С ТАЙМЕРОМ ==================== -->
+      <div style="max-width: 1180px; margin: 1.8rem auto 2.2rem; border-radius: 24px; overflow: hidden; border: 4px solid var(--primary); box-shadow: 0 25px 80px rgba(255, 46, 46, 0.35); position: relative;">
+        <img src="images/natisk-special.png"
+             alt="KIL_6 x GETIX TURNIRS"
+             style="width:100%; max-height: 420px; object-fit: cover; display:block;"
+             onerror="this.src='https://via.placeholder.com/1180x420/0a0a0c/ff2e2e?text=KIL_6+x+GETIX+TURNIRS';">
+
+        <!-- Тёмный оверлей -->
+        <div style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(10,10,12,0.25) 0%, rgba(10,10,12,0.88) 55%, rgba(10,10,12,0.95) 100%); padding: 2rem 2.5rem; display: flex; align-items: flex-end;">
+          <div style="display: flex; gap: 40px; width: 100%; align-items: flex-end; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 260px;">
+              <div style="margin-bottom: 10px;">
+                <span style="background: #ff2e2e; color: white; padding: 5px 16px; border-radius: 999px; font-size: 0.85rem; font-weight: 800;">
+                  ★ ОБРАТНЫЙ ОТСЧЁТ
+                </span>
+              </div>
+
+              <div id="banner-countdown" style="display: flex; gap: 14px; flex-wrap: wrap;"></div>
+            </div>
+
+            <div style="flex: 1.4; min-width: 320px;">
+              <div style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,46,46,0.9); padding:6px 18px; border-radius:999px; margin-bottom:12px;">
+                <span style="color:white; font-weight:900; font-size:0.95rem;">★ ПЕРВЫЙ В ИСТОРИИ КЛАНА ★</span>
+              </div>
+
+              <h2 style="color:#fff; font-size:2.5rem; font-weight:900; line-height:1.05; margin:0 0 8px;">
+                KIL_6 x GETIX TURNIRS
+              </h2>
+              
+              <p style="color:#ffdddd; font-size:1.15rem; margin:0; font-weight:600; max-width:520px;">
+                16 элитных бойцов • Эпическая сетка на выбывание • Исторический момент для клана
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- КРУТОЙ ПРЕВЬЮ БЛОК СТАТИСТИКИ НА ГЛАВНОЙ -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.6rem; max-width: 1100px; margin: 0 auto 3rem;">
-        <div class="glass" style="padding: 1.8rem; text-align:center; border-radius:18px; border:2px solid #333;">
-          <div style="color:#ff2e2e; font-size:2.8rem; font-weight:800;"></div>
-          <div style="color:#888; margin-top:6px; font-weight:600;"></div>
+      <!-- ==================== ЭПИЧЕСКИЙ ТЕКСТ ==================== -->
+      <div style="max-width: 980px; margin: 0 auto 2.8rem; text-align:center;">
+        <div style="display:inline-block; background:#1a1a20; border:2px solid #ff2e2e; padding:10px 32px; border-radius:999px; margin-bottom:1.4rem;">
+          <span style="color:#ff2e2e; font-weight:800; font-size:1.05rem; letter-spacing:1px;">КИБЕРСПОРТИВНЫЙ СТАРТ</span>
         </div>
-        <div class="glass" style="padding: 1.8rem; text-align:center; border-radius:18px; border:2px solid #333;">
-          <div style="color:#ffd700; font-size:2.8rem; font-weight:800;"></div>
-          <div style="color:#888; margin-top:6px; font-weight:600;"></div>
+        
+        <h3 style="font-size:2.35rem; font-weight:900; color:#fff; margin-bottom:1rem; line-height:1.15;">
+          ВПЕРВЫЕ В ИСТОРИИ КЛАНА<br>
+          <span style="color:#ff2e2e;">МЫ ЗАПУСКАЕМ СОБСТВЕННЫЙ ТУРНИР!</span>
+        </h3>
+        
+        <p style="font-size:1.22rem; color:#ccc; line-height:1.7; max-width:860px; margin:0 auto;">
+          Клан <strong style="color:#ff2e2e;">[KIL_6] THE SHIELD</strong> вместе с <strong>GETIX TURNIRS</strong> открывает новую главу.<br>
+          16 сильнейших бойцов сойдутся в грандиозной турнирной сетке.<br>
+          Каждый матч — это битва за честь и звание <strong>Чемпиона Клана</strong>.<br>
+          Следи за ходом турнира и будь частью истории!
+        </p>
+      </div>
+
+      <!-- ==================== КНОПКА ==================== -->
+      <div style="text-align:center; margin-bottom: 3rem;">
+        <button onclick="document.querySelector('[data-tab=\'tournaments\']').click();"
+                style="background: linear-gradient(90deg, #ff2e2e, #b71c1c); color:white; border:none; padding:20px 60px; font-size:1.35rem; font-weight:900; border-radius:16px; cursor:pointer; box-shadow:0 15px 45px rgba(255,46,46,0.55);">
+          СМОТРЕТЬ ПОЛНУЮ ТУРНИРНУЮ СЕТКУ →
+        </button>
+        <div style="margin-top:12px; color:#777; font-size:0.95rem;">Нажми, чтобы увидеть живую сетку и результаты</div>
+      </div>
+
+      <!-- ==================== ПРЕВЬЮ СТАТИСТИКИ ТУРНИРА ==================== -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.6rem; max-width: 1120px; margin: 0 auto 2.5rem;">
+        <div class="glass" style="padding: 2rem 1.8rem; text-align:center; border-radius:20px; border:3px solid #ff2e2e; box-shadow:0 0 35px rgba(255,46,46,0.25);">
+          <div style="color:#ff2e2e; font-size:3.1rem; font-weight:900; line-height:1;">3 место</div>
+          <div style="color:#fff; margin-top:8px; font-weight:700; font-size:1.15rem;">-</div>
+          <div style="color:#888; font-size:0.95rem; margin-top:4px;">бронза первого турнира</div>
         </div>
-        <div class="glass" style="padding: 1.8rem; text-align:center; border-radius:18px; border:2px solid #333;">
-          <div style="color:#00ccff; font-size:2.8rem; font-weight:800;"></div>
-          <div style="color:#888; margin-top:6px; font-weight:600;"></div>
+        <div class="glass" style="padding: 2rem 1.8rem; text-align:center; border-radius:20px; border:3px solid #ffd700; box-shadow:0 0 35px rgba(255,215,0,0.25);">
+          <div style="color:#ffd700; font-size:3.1rem; font-weight:900; line-height:1;">1 место</div>
+          <div style="color:#fff; margin-top:8px; font-weight:700; font-size:1.15rem;">-</div>
+          <div style="color:#888; font-size:0.95rem; margin-top:4px;">Чемпион первого турнира</div>
+        </div>
+        <div class="glass" style="padding: 2rem 1.8rem; text-align:center; border-radius:20px; border:3px solid #00ccff; box-shadow:0 0 35px rgba(0,204,255,0.25);">
+          <div style="color:#00ccff; font-size:3.1rem; font-weight:900; line-height:1;">2 место</div>
+          <div style="color:#fff; margin-top:8px; font-weight:700; font-size:1.15rem;">-</div>
+          <div style="color:#888; font-size:0.95rem; margin-top:4px;">Серебро первого турнира</div>
         </div>
       </div>
     </div>
@@ -1033,9 +1088,15 @@
 <div id="tournaments" class="content">
   <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
 
-    <h2 style="text-align:center; font-size:2.6rem; font-weight:900; color:#ff2e2e; margin-bottom:2.2rem;">
-      ТУРНИРНАЯ СЕТКА • KIL_6 x GETIX TURNIRS
-    </h2>
+    <div style="text-align:center; margin-bottom:1.8rem;">
+      <div style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,46,46,0.1); border:2px solid #ff2e2e; padding:6px 22px; border-radius:999px; margin-bottom:12px;">
+        <span style="color:#ff2e2e; font-weight:900; font-size:0.95rem;">★ ПЕРВЫЙ ТУРНИР В ИСТОРИИ КЛАНА ★</span>
+      </div>
+      <h2 style="text-align:center; font-size:2.55rem; font-weight:900; color:#ff2e2e; margin:0;">
+        ТУРНИРНАЯ СЕТКА • KIL_6 x GETIX TURNIRS
+      </h2>
+      <p style="color:#aaa; margin-top:8px; font-size:1.05rem;">16 бойцов • Путь к Чемпиону начался</p>
+    </div>
 
     <div style="background:#111114; border:3px solid #333; border-radius:20px; padding:28px 25px; overflow-x:auto;">
 
@@ -1365,15 +1426,15 @@
     ];
 
     const members = [
-     { name: "evgecshok", kpd: 6.0, role: "Лидер", img: "images/player1.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
-      { name: "surprizZze", kpd: 6.0, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}, {icon:"", name:"Серебряный мяч", desc:"Выдана за выход команды в плей-офф 1/4", rarity:"legendary"}] },
+     { name: "evgecshok", kpd: 5.6, role: "Лидер", img: "images/player1.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
+      { name: "surprizZze", kpd: 5.5, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}, {icon:"", name:"Серебряный мяч", desc:"Выдана за выход команды в плей-офф 1/4", rarity:"legendary"}] },
       { name: "flamesmurf_TW", kpd: 0.6, role: "Активный игрок", img: "images/player43.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
       { name: "___BAD__B0Y___", kpd: 4.0, role: "Активный игрок", img: "images/player45.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
       { name: "HE_IIpoJIUL", kpd: 0.0, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Балтика", desc:"Он такой единственный", rarity:"legendary"}, {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
       { name: "oxana2009", kpd: 0.0, role: "Активный игрок", img: "images/player4.jpg", medals: [] },
       { name: "Byaka2311", kpd: 0.7, role: "Активный игрок", img: "images/player5.jpg", medals: [] },
       { name: "CaMyPau_PA", kpd: 0.0, role: "Активный игрок", img: "images/player6.jpg", medals: [] },
-      { name: "egorka_544mcotg", kpd: 5.3, role: "Активный игрок", img: "images/player7.jpg", medals: [] },
+      { name: "egorka_544mcotg", kpd: 5.0, role: "Активный игрок", img: "images/player7.jpg", medals: [] },
       { name: "FruKTIc_", kpd: 0.0, role: "Активный игрок", img: "images/player8.jpg", medals: [] },
       { name: "KOrbenDallass", kpd: 0.0, role: "Активный игрок", img: "images/player9.jpg", medals: [] },
       { name: "kiruxa3473", kpd: 0.3, role: "Активный игрок", img: "images/player10.jpg", medals: [] },
@@ -1383,7 +1444,7 @@
       { name: "sacha_1986", kpd: 0.0, role: "Активный игрок", img: "images/player14.jpg", medals: [] },
       { name: "SUPER_RAK", kpd: 0.0, role: "Активный игрок", img: "images/player15.jpg", medals: [] },
       { name: "TSUNXM1", kpd: 0.0, role: "Активный игрок", img: "images/player17.jpg", medals: [] },
-      { name: "Vitek_7777", kpd: 1.6, role: "Активный игрок", img: "images/player18.jpg", medals: [] },
+      { name: "Vitek_7777", kpd: 1.2, role: "Активный игрок", img: "images/player18.jpg", medals: [] },
       { name: "Wolfsburg__I_LI", kpd: 0.0, role: "Активный игрок", img: "images/player19.jpg", medals: [] },
       { name: "BaHDuT_c_ALTaYa_", kpd: 0.0, role: "Активный игрок", img: "images/player20.jpg", medals: [] },
       { name: "3PX", kpd: 0.0, role: "Активный игрок", img: "images/player21.jpg", medals: [] },
@@ -1411,8 +1472,8 @@
 
       { name: "6aJJaMyT_", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "_СуРок_", kpd: 2.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
-      { name: "esha345", kpd: 1.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
-      { name: "HET_ALKOGOLIZMy", kpd: 1.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
+      { name: "esha345", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
+      { name: "HET_ALKOGOLIZMy", kpd: 0.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "HET_HacTPoeHu9l", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "npocBugg", kpd: 0.5, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
       { name: "___OKAMI___", kpd: 0.0, role: "Активный игрок", img: "images/player_new.jpg", medals: [] },
@@ -2082,6 +2143,49 @@ function initTournaments() {
       initEverything();
       checkSplashScreen();
     });
+  </script>
+  <script>
+  // ==================== ТАЙМЕР ВНУТРИ БАННЕРА ====================
+  function initBannerCountdown() {
+    const el = document.getElementById('banner-countdown');
+    if (!el) return;
+
+    const target = new Date('2026-07-11T20:40:00+03:00');
+
+    function update() {
+      const now = new Date();
+      let diff = target - now;
+
+      if (diff <= 0) {
+        el.innerHTML = `<div style="color:#ff2e2e; font-size:1.8rem; font-weight:900;">ТУРНИР ЗАВЕРШЁН</div>`;
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+      el.innerHTML = `
+        <div style="background:rgba(0,0,0,0.6); border:2px solid #ff2e2e; border-radius:14px; padding:10px 18px; text-align:center; min-width:78px;">
+          <div style="font-size:2.1rem; font-weight:900; color:#fff; line-height:1;">${days}</div>
+          <div style="font-size:0.75rem; color:#ffaaaa; margin-top:2px;">ДНЕЙ</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.6); border:2px solid #ff2e2e; border-radius:14px; padding:10px 18px; text-align:center; min-width:78px;">
+          <div style="font-size:2.1rem; font-weight:900; color:#fff; line-height:1;">${hours}</div>
+          <div style="font-size:0.75rem; color:#ffaaaa; margin-top:2px;">ЧАСОВ</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.6); border:2px solid #ff2e2e; border-radius:14px; padding:10px 18px; text-align:center; min-width:78px;">
+          <div style="font-size:2.1rem; font-weight:900; color:#fff; line-height:1;">${minutes}</div>
+          <div style="font-size:0.75rem; color:#ffaaaa; margin-top:2px;">МИНУТ</div>
+        </div>
+      `;
+    }
+
+    update();
+    setInterval(update, 30000);
+  }
+
+  document.addEventListener('DOMContentLoaded', initBannerCountdown);
   </script>
 </body>
 </html>
