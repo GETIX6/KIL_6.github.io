@@ -2145,44 +2145,50 @@ function initTournaments() {
     });
   </script>
   <script>
-  // ==================== ТАЙМЕР ВНУТРИ БАННЕРА ====================
+  // ==================== ТАЙМЕР В БАННЕРЕ (С СЕКУНДАМИ) ====================
   function initBannerCountdown() {
     const el = document.getElementById('banner-countdown');
     if (!el) return;
 
-    const target = new Date('2026-07-11T20:40:00+03:00');
+    // === ИЗМЕНИ ДАТУ ПРИ НЕОБХОДИМОСТИ ===
+    const target = new Date('2026-07-11T20:40:00+03:00'); // 11 июля 2026, 20:40 МСК
 
     function update() {
       const now = new Date();
       let diff = target - now;
 
       if (diff <= 0) {
-        el.innerHTML = `<div style="color:#ff2e2e; font-size:1.8rem; font-weight:900;">ТУРНИР ЗАВЕРШЁН</div>`;
+        el.innerHTML = `<div style="color:#ff2e2e; font-size:1.7rem; font-weight:900; padding:10px 0;">ТУРНИР ЗАВЕРШЁН</div>`;
         return;
       }
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
       el.innerHTML = `
-        <div style="background:rgba(0,0,0,0.6); border:2px solid #ff2e2e; border-radius:14px; padding:10px 18px; text-align:center; min-width:78px;">
-          <div style="font-size:2.1rem; font-weight:900; color:#fff; line-height:1;">${days}</div>
-          <div style="font-size:0.75rem; color:#ffaaaa; margin-top:2px;">ДНЕЙ</div>
+        <div style="background:rgba(0,0,0,0.55); border:2px solid #ff2e2e; border-radius:12px; padding:8px 14px; text-align:center; min-width:68px;">
+          <div style="font-size:1.85rem; font-weight:900; color:#fff; line-height:1;">${days}</div>
+          <div style="font-size:0.7rem; color:#ffaaaa; margin-top:1px;">ДНЕЙ</div>
         </div>
-        <div style="background:rgba(0,0,0,0.6); border:2px solid #ff2e2e; border-radius:14px; padding:10px 18px; text-align:center; min-width:78px;">
-          <div style="font-size:2.1rem; font-weight:900; color:#fff; line-height:1;">${hours}</div>
-          <div style="font-size:0.75rem; color:#ffaaaa; margin-top:2px;">ЧАСОВ</div>
+        <div style="background:rgba(0,0,0,0.55); border:2px solid #ff2e2e; border-radius:12px; padding:8px 14px; text-align:center; min-width:68px;">
+          <div style="font-size:1.85rem; font-weight:900; color:#fff; line-height:1;">${hours}</div>
+          <div style="font-size:0.7rem; color:#ffaaaa; margin-top:1px;">ЧАСОВ</div>
         </div>
-        <div style="background:rgba(0,0,0,0.6); border:2px solid #ff2e2e; border-radius:14px; padding:10px 18px; text-align:center; min-width:78px;">
-          <div style="font-size:2.1rem; font-weight:900; color:#fff; line-height:1;">${minutes}</div>
-          <div style="font-size:0.75rem; color:#ffaaaa; margin-top:2px;">МИНУТ</div>
+        <div style="background:rgba(0,0,0,0.55); border:2px solid #ff2e2e; border-radius:12px; padding:8px 14px; text-align:center; min-width:68px;">
+          <div style="font-size:1.85rem; font-weight:900; color:#fff; line-height:1;">${minutes}</div>
+          <div style="font-size:0.7rem; color:#ffaaaa; margin-top:1px;">МИНУТ</div>
+        </div>
+        <div style="background:rgba(0,0,0,0.55); border:2px solid #ff2e2e; border-radius:12px; padding:8px 14px; text-align:center; min-width:68px;">
+          <div style="font-size:1.85rem; font-weight:900; color:#fff; line-height:1;">${seconds}</div>
+          <div style="font-size:0.7rem; color:#ffaaaa; margin-top:1px;">СЕКУНД</div>
         </div>
       `;
     }
 
     update();
-    setInterval(update, 30000);
+    setInterval(update, 1000); // обновление каждую секунду
   }
 
   document.addEventListener('DOMContentLoaded', initBannerCountdown);
