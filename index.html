@@ -2151,14 +2151,14 @@ function initTournaments() {
     if (!el) return;
 
     // === ИЗМЕНИ ДАТУ ПРИ НЕОБХОДИМОСТИ ===
-    const target = new Date('2026-07-11T20:40:00+03:00'); // 11 июля 2026, 20:40 МСК
+    const target = new Date('2026-07-11T21:00:00+03:00'); // 11 июля 2026, 21:00 МСК
 
     function update() {
       const now = new Date();
       let diff = target - now;
 
       if (diff <= 0) {
-        el.innerHTML = `<div style="color:#ff2e2e; font-size:1.7rem; font-weight:900; padding:10px 0;">ТУРНИР ЗАВЕРШЁН</div>`;
+        el.innerHTML = `<div style="color:#ff2e2e; font-size:1.7rem; font-weight:900; padding:10px 0;">ТУРНИР НАЧАЛСЯ</div>`;
         return;
       }
 
