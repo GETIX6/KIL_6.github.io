@@ -1,14 +1,90 @@
-    .stats-map {
-      width: auto;
-      max-width: 100%;
-      height: auto;
-      margin: 2rem auto;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-      border: 2px solid var(--primary);
-      display: block;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-      image-rendering: pixelated; /* на крайний случай */
-    }
+/* === СИСТЕМА КУРСОРОВ === */
+body, button, a, input, .tab, .card, .glass {
+  cursor: default !important;
+}
+
+#custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+
+#custom-cursor.active {
+  transform: scale(1.4);
+}
+
+/* Тег участника (анимированный градиент оранжевый → зелёный) */
+.member-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin-left: 8px;
+  color: #0b0b0b;
+  background: linear-gradient(90deg, #ff5500, #ffd166, #88ff55);
+  background-size: 300% 300%;
+  box-shadow: 0 6px 18px rgba(136, 255, 85, 0.06), 0 2px 6px rgba(255,85,0,0.08);
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  -webkit-animation: gradientShift 3.5s linear infinite;
+  animation: gradientShift 3.5s linear infinite;
+  will-change: background-position;
+}
+
+@-webkit-keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  cursor: default !important;
+}
+#sun-rays {
+  position: fixed;
+  top: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1400px;
+  height: 1400px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.18;
+  background: 
+    /* Основные лучи */
+    conic-gradient(
+      from 195deg at 50% 25%,
+      transparent 0deg,
+      rgba(255, 200, 100, 0.4) 6deg,
+      transparent 14deg,
+      transparent 30deg,
+      rgba(255, 170, 70, 0.35) 38deg,
+      transparent 52deg,
+      transparent 68deg,
+      rgba(255, 150, 60, 0.3) 75deg,
+      transparent 92deg
+    ),
+    /* Дополнительные тонкие лучи */
+    conic-gradient(
+      from 210deg at 50% 25%,
+      transparent 0deg,
+      rgba(255, 220, 130, 0.25) 4deg,
+      transparent 10deg,
+      transparent 45deg,
+      rgba(255, 180, 80, 0.2) 52deg,
+      transparent 80deg
+    );
+  animation: sunRaysRotate 180s linear infinite;
+  filter: blur(0.8px);
+}
