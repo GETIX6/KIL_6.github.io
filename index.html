@@ -6,21 +6,23 @@
   <title>Клан [KIL_6] • THE SHIELD 2.0</title>
   <style>
     :root {
-  
-      --primary: #ff2e2e;
-      --primary-dark: #b71c1c;
-      --primary-light: #ff5252;
-      --accent: #ff6b6b;
-      --gold: #ffd700;
-      --purple: #c026d3;
-      --dark: #0a0a0c;
-      --dark-2: #121216;
-      --glass-bg: rgba(22, 22, 28, 0.78);
-      --glass-border: rgba(255, 46, 46, 0.12);
-      --text: #e8e8e8;
-      --text-muted: #888;
-      --card-hover: rgba(255, 46, 46, 0.08);
-    }
+  --primary: #ff5500;
+  --primary-dark: #cc3300;
+  --primary-light: #ff7a33;
+  --accent: #ff6b00;
+  --gold: #ffd700;
+  --purple: #c026d3;
+  --dark: #0a0a0c;
+  --dark-2: #121216;
+  --glass-bg: rgba(20, 18, 16, 0.82);
+  --glass-border: rgba(255, 85, 0, 0.18);
+  --text: #e8e8e8;
+  --text-muted: #888;
+  --card-hover: rgba(255, 85, 0, 0.12);
+
+  --gradient-primary: linear-gradient(135deg, #ff6b00 0%, #ff5500 50%, #ff3300 100%);
+  --gradient-button: linear-gradient(90deg, #ff6b00, #ff5500, #ff3300);
+}
 
 
     * { 
@@ -869,6 +871,41 @@
   </style>
 </head>
 <body>
+<!-- ==================== ЭКРАН ЛОГИНА ==================== -->
+<div id="loginScreen" style="position:fixed; inset:0; z-index:99999; display:flex; align-items:center; justify-content:center; background:#000;">
+  
+  <video id="loginVideo" autoplay loop muted playsinline style="position:absolute; width:100%; height:100%; object-fit:cover; z-index:1;">
+    <source src="https://limewire.com/decrypt?sharingBucketId=feb941e8-c4bc-4128-aa95-30b66eea17e1&contentItemId=75f07498-0863-4dbb-8697-378109beecda&downloadUrl=https%3A%2F%2Fsp1.strg.com%2Flimewire%2Flmwrntwrk%2Fbuckets%2Ffeb941e8-c4bc-4128-aa95-30b66eea17e1%2F75f07498-0863-4dbb-8697-378109beecda%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Date%3D20260714T152156Z%26X-Amz-SignedHeaders%3Dhost%26X-Amz-Credential%3D3HMkFzXmKJPnacuYeHAg%2F20260714%2Flmwrntwrk%2Fs3%2Faws4_request%26X-Amz-Expires%3D1800%26X-Amz-Signature%3D458d5ed39e70e72fdd3f19b56ede6d5b09bacf27ba1e993d04de6a92d2c35b96%26x-lmwrntwrk-request-id%3D01KXGKGW5R4YDBYZ5EEXJDYM87%26x-lmwrntwrk-signature%3DHzpmLW%25252F%25252BvC9sXy0Y0mtTFn%25252FHiKP4GveKXmwCJJAcZAWHRO4H%25252FgZCIj675NGXS%25252BcnD4zAGUw8hIHLBiVKj69gWhs%25253D%26x-max-request-count%3D10000&mediaType=video%2Fmp4&decryptionKeys=eyJhZXNHY21Kd2siOnsiYWVzS2V5VHlwZSI6IlNZTU1FVFJJQ19BRVMtR0NNX0tFWSIsImp3ayI6eyJhbGciOiJBMjU2R0NNIiwiZXh0Ijp0cnVlLCJrIjoiY1dqVVAta2EzU3U5YXY2aVptN056T2EzbUFmZm9GYzh6QU5zOHAwenJJMCIsImtleV9vcHMiOlsiZW5jcnlwdCIsImRlY3J5cHQiXSwia3R5Ijoib2N0In19LCJhZXNDdHJKd2siOnsiYWVzS2V5VHlwZSI6IlNZTU1FVFJJQ19BRVMtQ1RSX0tFWSIsImp3ayI6eyJhbGciOiJBMjU2Q1RSIiwiZXh0Ijp0cnVlLCJrIjoiY1dqVVAta2EzU3U5YXY2aVptN056T2EzbUFmZm9GYzh6QU5zOHAwenJJMCIsImtleV9vcHMiOlsiZW5jcnlwdCIsImRlY3J5cHQiXSwia3R5Ijoib2N0In19fQ" type="video/mp4">
+  </video>
+
+  <div style="position:absolute; inset:0; background:rgba(8,8,10,0.78); z-index:2;"></div>
+
+  <div style="position:relative; z-index:3; width:100%; max-width:460px; padding:0 20px;">
+    <div style="text-align:center; margin-bottom:35px;">
+      <h1 style="color:#ffaa00; font-size:2.35rem; font-weight:900; margin:0;">KIL_6</h1>
+      <p style="color:#ff5500; font-size:1.35rem; font-weight:700; margin:4px 0 0;">x GETIX TURNIRS</p>
+    </div>
+
+    <div style="background:rgba(18,17,20,0.95); border:3px solid #ff5500; border-radius:8px; padding:38px 42px;">
+      <div style="margin-bottom:22px;">
+        <label style="display:block; color:#ffaa00; font-weight:700; font-size:1.05rem; margin-bottom:8px;">ЛОГИН</label>
+        <input id="loginInput" type="text" placeholder="Введите логин" style="width:100%; padding:18px 20px; background:#111114; border:2px solid #ff5500; border-radius:6px; color:white; font-size:1.25rem;">
+      </div>
+      <div style="margin-bottom:28px;">
+        <label style="display:block; color:#ffaa00; font-weight:700; font-size:1.05rem; margin-bottom:8px;">ПАРОЛЬ</label>
+        <input id="passwordInput" type="password" placeholder="Введите пароль" style="width:100%; padding:18px 20px; background:#111114; border:2px solid #ff5500; border-radius:6px; color:white; font-size:1.25rem;">
+      </div>
+      <button onclick="tryLogin()" style="width:100%; padding:20px; background:linear-gradient(#ff6b00,#ff5500); color:white; border:none; border-radius:6px; font-size:1.35rem; font-weight:900; cursor:pointer;">
+        ВОЙТИ В КЛАН
+      </button>
+      <p id="loginError" style="color:#ff5252; text-align:center; margin-top:18px; font-weight:700; display:none;">Неверный логин или пароль</p>
+      <div style="margin-top:14px; display:flex; gap:12px; justify-content:center;">
+        <button onclick="enterAsGuest()" style="padding:10px 18px; background:transparent; color:#ffb86b; border:2px solid #ff5500; border-radius:6px; font-weight:800; cursor:pointer;">Войти как гость</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- АНИМИРОВАННЫЙ КРАСНЫЙ ФОН (ЧАСТИЦЫ) -->
   <canvas id="particles-canvas"></canvas>
 
@@ -887,6 +924,7 @@
   <button class="tab" data-tab="tournaments">ТУРНИРЫ</button>
   <button class="tab" data-tab="rules">ПРАВИЛА</button>
   <button class="tab" data-tab="tankbuilder">СОБРАТЬ ТАНК</button>
+  <button class="tab" data-tab="plus">KIL_6+</button>
 </nav>
   </header>
 
@@ -894,8 +932,8 @@
     <!-- Главная (УСИЛЕННЫЙ ДИЗАЙН) -->
     <div id="home" class="content active">
       <h1 style="text-align:center; margin: 2.3rem 0 0.6rem; font-size: 3.45rem; font-weight: 800; letter-spacing: -1.5px; text-shadow: 0 0 30px rgba(255, 46, 46, 0.5);">
-        <span style="color:var(--primary)">[KIL_6] THE SHIELD</span><br>
-        <span style="font-size: 2.1rem; color:#ccc; font-weight:600;">2.0</span>
+        <span style="color:var(--primary)">[KIL_6] THE SHIELD - pre 3.0</span><br>
+        <span style="font-size: 2.1rem; color:#ccc; font-weight:600;"></span>
       </h1>
 
       <!-- ==================== ГРАНДИОЗНЫЙ БАННЕР С ТАЙМЕРОМ ==================== -->
@@ -920,7 +958,7 @@
 
             <div style="flex: 1.4; min-width: 320px;">
               <div style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,46,46,0.9); padding:6px 18px; border-radius:999px; margin-bottom:12px;">
-                <span style="color:white; font-weight:900; font-size:0.95rem;">★ ПЕРВЫЙ В ИСТОРИИ КЛАНА ★</span>
+                <span style="color:white; font-weight:900; font-size:0.95rem;">★ Второй сезон ★</span>
               </div>
 
               <h2 style="color:#fff; font-size:2.5rem; font-weight:900; line-height:1.05; margin:0 0 8px;">
@@ -942,7 +980,7 @@
         </div>
         
         <h3 style="font-size:2.35rem; font-weight:900; color:#fff; margin-bottom:1rem; line-height:1.15;">
-          ВПЕРВЫЕ В ИСТОРИИ КЛАНА<br>
+          ВТОРОЙ СЕЗОН СТАРТУЕТ 18.07.2026<br>
           <span style="color:#ff2e2e;">МЫ ЗАПУСКАЕМ СОБСТВЕННЫЙ ТУРНИР!</span>
         </h3>
         
@@ -1360,6 +1398,121 @@
     </div>
   </div>
 
+
+  <!-- ==================== KIL_6+ (КРАСИВЫЙ ИНТЕРФЕЙС) ==================== -->
+<div id="plus" class="content">
+  <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+    
+    <h2 style="font-size: 3rem; font-weight: 900; color: var(--primary); margin-bottom: 10px;">
+      KIL_6+
+    </h2>
+    <p style="font-size: 1.4rem; color: #ccc; margin-bottom: 3rem;">
+      Премиум-подписка клана • Эксклюзивные возможности
+    </p>
+
+    <!-- Преимущества -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-bottom: 3.5rem; text-align: left;">
+      
+      <div class="glass" style="padding: 28px; border-radius: 20px; border: 2px solid var(--primary);">
+        <h3 style="color: var(--primary); margin-bottom: 14px; font-size: 1.35rem;">Эфекты в турнирах</h3>
+        <p style="color:#aaa; line-height:1.6;">Визуальные эфекты в сетке турнира</p>
+      </div>
+
+      <div class="glass" style="padding: 28px; border-radius: 20px; border: 2px solid var(--primary);">
+        <h3 style="color: var(--primary); margin-bottom: 14px; font-size: 1.35rem;">Эксклюзивные медали и роли</h3>
+        <p style="color:#aaa; line-height:1.6;">Уникальные медали и цветные роли в чате и на сайте</p>
+      </div>
+
+      <div class="glass" style="padding: 28px; border-radius: 20px; border: 2px solid var(--primary);">
+        <h3 style="color: var(--primary); margin-bottom: 14px; font-size: 1.35rem;">тест</h3>
+        <p style="color:#aaa; line-height:1.6;">тест</p>
+      </div>
+
+      <div class="glass" style="padding: 28px; border-radius: 20px; border: 2px solid var(--primary);">
+        <h3 style="color: var(--primary); margin-bottom: 14px; font-size: 1.35rem;">KIL_6+ VPN</h3>
+        <p style="color:#aaa; line-height:1.6;">После покупки доступен эксклюзивный VPN для безопасного и быстрого соеденения</p>
+      </div>
+
+    </div>
+
+    <!-- Цена и кнопка -->
+    <div class="glass" style="max-width: 480px; margin: 0 auto; padding: 40px; border-radius: 24px; border: 3px solid var(--primary);">
+      <div style="margin-bottom: 25px;">
+        <span style="font-size: 1.2rem; color:#888;">Стоимость</span><br>
+        <span style="font-size: 3.5rem; font-weight: 900; color: var(--primary);">30 ₽</span>
+        <span style="font-size: 1.4rem; color:#888;">/ месяц</span>
+      </div>
+
+      <button onclick="showKIL6PlusModal()"
+              style="width: 100%; padding: 20px; background: var(--gradient-button); color: white; border: none; border-radius: 16px; font-size: 1.4rem; font-weight: 900; cursor: pointer; box-shadow: 0 12px 40px rgba(255,85,0,0.45);">
+        ОФОРМИТЬ ПОДПИСКУ KIL_6+
+      </button>
+
+      <div style="margin-top: 16px; font-size: 1rem; color:#777;">
+        Отмена в любой момент • Автопродление
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ==================== КРАСИВОЕ МЕНЮ ОПЛАТЫ KIL_6+ ==================== -->
+<div id="kil6plusModal" class="modal">
+  <div class="modal-content glass" style="max-width: 820px; border: 3px solid var(--primary); padding: 0; overflow: hidden;">
+    
+    <!-- Заголовок -->
+    <div style="background: linear-gradient(135deg, #1a1a20, #111114); padding: 35px 40px; text-align: center; border-bottom: 2px solid var(--primary);">
+      <h2 style="color: var(--primary); font-size: 2.4rem; margin: 0 0 8px;">Выберите способ оплаты</h2>
+      <p style="color: #aaa; font-size: 1.15rem; margin: 0;">KIL_6+ • 30 ₽ / месяц</p>
+    </div>
+
+    <div style="padding: 45px 50px;">
+      
+      <!-- Два варианта оплаты -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+        
+        <!-- FunPay -->
+        <div onclick="selectPaymentMethod('FunPay')" 
+             style="background: #111114; border: 3px solid #ff5500; border-radius: 20px; padding: 35px 25px; text-align: center; cursor: pointer; transition: all 0.3s; position: relative;">
+          <div style="font-size: 3.2rem; margin-bottom: 15px;"></div>
+          <h3 style="color: #fff; font-size: 1.7rem; margin-bottom: 12px;">FunPay</h3>
+          <div style="background: #22c55e; color: #111; padding: 6px 18px; border-radius: 999px; display: inline-block; font-weight: 800; font-size: 0.95rem; margin-bottom: 15px;">
+            Готово
+          </div>
+          <p style="color: #888; font-size: 1rem;">Оплата через FunPay</p>
+        </div>
+
+        <!-- СБП -->
+        <div onclick="selectPaymentMethod('СБП')" 
+             style="background: #111114; border: 3px solid #ff5500; border-radius: 20px; padding: 35px 25px; text-align: center; cursor: pointer; transition: all 0.3s; position: relative;">
+          <div style="font-size: 3.2rem; margin-bottom: 15px;"></div>
+          <h3 style="color: #fff; font-size: 1.7rem; margin-bottom: 12px;">СБП</h3>
+          <div style="background: #ffaa00; color: #111; padding: 6px 18px; border-radius: 999px; display: inline-block; font-weight: 800; font-size: 0.95rem; margin-bottom: 15px;">
+            В РАЗРАБОТКЕ
+          </div>
+          <p style="color: #888; font-size: 1rem;">Система Быстрых Платежей</p>
+        </div>
+
+      </div>
+
+      <div style="text-align: center; margin-top: 35px; color: #777; font-size: 1rem;">
+        Оба способа оплаты находятся в разработке.<br>
+        Скоро будет доступно!
+      </div>
+
+    </div>
+
+    <!-- Кнопка закрыть -->
+    <div style="padding: 20px; background: #111114; text-align: center; border-top: 1px solid #333;">
+      <button onclick="closeKIL6PlusModal()" 
+              style="padding: 14px 50px; background: #333; color: white; border: none; border-radius: 12px; font-weight: 700; font-size: 1.1rem; cursor: pointer;">
+        Закрыть
+      </button>
+    </div>
+
+  </div>
+</div>
+
   <!-- МОДАЛЬНОЕ ОКНО ИГРОКА -->
   <div id="playerModal" class="modal">
     <div class="modal-content glass">
@@ -1405,6 +1558,7 @@
     © 2026 КЛАН [KIL_6] THE SHIELD • ВСЕ ПРАВА ЗАЩИЩЕНЫ • 2.0
   </footer>
 
+  <script src="script.js"></script>
   <script>
     const loader = document.getElementById('tabLoader');
     let currentUser = null;
@@ -1427,7 +1581,7 @@
 
     const members = [
      { name: "evgecshok", kpd: 8.1, role: "Лидер", img: "images/player1.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
-      { name: "surprizZze", kpd: 8.1, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}, {icon:"", name:"Серебряный мяч", desc:"Выдана за выход команды в плей-офф 1/4", rarity:"legendary"}] },
+      { name: "surprizZze", tag: "[KIL_6+]", kpd: 8.1, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}, {icon:"", name:"Серебряный мяч", desc:"Выдана за выход команды в плей-офф 1/4", rarity:"legendary"}] },
       { name: "flamesmurf_TW", kpd: 0.6, role: "Активный игрок", img: "images/player43.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
       { name: "___BAD__B0Y___", kpd: 6.0, role: "Активный игрок", img: "images/player45.jpg", medals: [{icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}, {icon:"", name:"10 LVL", desc:"Выдовалась за получение 10 LVL КПД в первом сезоне.", rarity:"legendary"}] },
       { name: "HE_IIpoJIUL", kpd: 0.0, role: "Активный игрок", img: "images/player3.jpg", medals: [{icon:"", name:"Балтика", desc:"Он такой единственный", rarity:"legendary"}, {icon:"", name:"Медаль спринта", desc:"Выдана за участие СПРИНТ", rarity:"rare"}] },
@@ -1621,11 +1775,16 @@
         const card = document.createElement('div');
         card.className = 'card glass';
         card.style.animationDelay = `${index * 60}ms`;
+        let nameHTML = m.name;
+        if (m.tag) {
+          nameHTML += ` <span class="member-tag">${m.tag}</span>`;
+        }
+
         card.innerHTML = `
           <img src="${imgSrc}" alt="${m.name}" onerror="this.src='https://via.placeholder.com/320x195/111114/ff2e2e?text=${m.name}'">
           <div class="card-body">
             <h3 style="display:flex; align-items:center; justify-content:center; gap:8px; font-size:1.35rem; font-weight:700;">
-              ${m.name}
+              ${nameHTML}
             </h3>
             <p style="color:#777; margin:10px 0 4px; font-weight:500;">${m.role}</p>
             ${medalsHTML}
@@ -2144,6 +2303,7 @@ function initTournaments() {
       checkSplashScreen();
     });
   </script>
+  
   <script>
   // ==================== ТАЙМЕР В БАННЕРЕ (С СЕКУНДАМИ) ====================
   function initBannerCountdown() {
@@ -2151,7 +2311,7 @@ function initTournaments() {
     if (!el) return;
 
     // === ИЗМЕНИ ДАТУ ПРИ НЕОБХОДИМОСТИ ===
-    const target = new Date('2026-07-11T21:00:00+03:00'); // 11 июля 2026, 21:00 МСК
+    const target = new Date('2026-07-18T21:00:00+03:00');
 
     function update() {
       const now = new Date();
