@@ -163,7 +163,7 @@ function tryLogin() {
     { login: "SurprizZze", password: "Key+4633434" },
     { login: "flamesmurf_TW", password: "Key+463734" },
     { login: "HE_IIpoJIUL", password: "Key+4633332" },
-    { login: "HET_ALK0G0LIZMy", password: "qwerty" }
+    { login: "HET_ALK0G0LIZMy", password: "Key+4632324" }
   ];
 
   const user = accounts.find(a => a.login === login && a.password === pass);
