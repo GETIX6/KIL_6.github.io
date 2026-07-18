@@ -158,8 +158,11 @@ function tryLogin() {
   const loginScreen = document.getElementById('loginScreen');
 
   const accounts = [
-    { login: "evgecshok", password: "123456" },
-    { login: "BaHDuT_c_ALTaYa_", password: "clan2026" },
+    { login: "evgecshok", password: "Key+4633527" },
+    { login: "BaHDuT_c_ALTaYa_", password: "Key+463721" },
+    { login: "SurprizZze", password: "Key+4633434" },
+    { login: "flamesmurf_TW", password: "Key+463734" },
+    { login: "HE_IIpoJIUL", password: "Key+4633332" },
     { login: "HET_ALK0G0LIZMy", password: "qwerty" }
   ];
 
